@@ -1,0 +1,78 @@
+
+export const columns = [
+    {
+        "title": 'First Name ',
+        "dataIndex": 'firstName',
+        "key": 'firstName',
+        sorter: (a, b) => a.firstName.length - b.firstName.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+        filteredValue:["i"],
+        onFilter:(value, record)=>{return String(record.firstName).toLowerCase().includes(value.toLowerCase())}
+    },
+    {
+        "title": 'Last Name',
+        "dataIndex": 'lastName',
+        "key": 'lastName',
+        sorter: (a, b) => a.lastName.length - b.lastName.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+    },
+    {
+        "title": 'Start date',
+        "dataIndex": 'startDate',
+        "key": 'startDate',
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => a.startDate - b.startDate,
+        ellipsis: true,
+    },
+    {
+        "title": 'Department',
+        "dataIndex": 'department',
+        "key": 'department',
+        sorter: (a, b) => a.department.length - b.department.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+    },
+    {
+        "title": 'Birthdate',
+        "dataIndex": 'birthdate',
+        "key": 'birthdate',
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => a.birthdate - b.birthdate,
+        ellipsis: true,
+    },
+    {
+        "title": 'Street',
+        "dataIndex": 'street',
+        "key": 'street',
+        sorter: (a, b) => a.street.length - b.street.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+    },
+    {
+        "title": 'City',
+        "dataIndex": 'city',
+        "key": 'city',
+        sorter: (a, b) => a.city.length - b.city.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+    },
+    {
+        "title": 'State',
+        "dataIndex": 'state',
+        "key": 'state',
+        sorter: (a, b) => a.state.length - b.state.length,
+        defaultSortOrder: 'descend',
+        ellipsis: true,
+    },
+    {
+        "title": 'Zip Code',
+        "dataIndex": 'zipcode',
+        "key": 'zipcode',
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => a.zipcode - b.zipcode,
+        ellipsis: true,
+    },
+    
+];

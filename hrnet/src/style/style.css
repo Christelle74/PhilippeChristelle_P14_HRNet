@@ -1,0 +1,109 @@
+@import "antd/dist/antd.css";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: #d6db99a9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+main{
+    width:75%;
+    margin: 20px;
+    background-color: rgb(240, 239, 239);
+}
+h1{
+    font-size: 1.2rem;
+    color:black;
+    margin: 30px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.logo img{
+    width: 200px;
+    height: 200px;
+    margin: 20px 0 50px;
+}
+ul{
+    margin-top: 50px;
+}
+.navigation li{
+    margin-top: 20px;
+}
+.navActive{
+    color:#5a6f08;
+    text-decoration-line: underline;
+}
+a{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+
+.ant-form-item-label label, .ant-picker-panel, .ant-form-item-explain-error{
+    font-size: 12px;
+}
+
+.ant-space{
+    width: 40%
+}
+.ant-picker-today-btn{
+    font-size: 14px ;
+}
+.ant-picker-body{
+    background-color:#d6db99a9
+}
+.ant-picker-today-btn, .ant-table-column-sorter-down.active, .ant-table-column-sorter-up.active, .ant-picker-header-view {
+    color:#5a6f08;
+}
+.ant-input-affix-wrapper, .ant-picker, .ant-select, .ant-input-number, .ant-pagination-item-active, .ant-btn {
+    border: 1px solid #5a6f08;
+}
+
+.ant-table-column-title{
+    font-weight: 700;
+    color:#5a6f08;
+}
+.ant-table-body{
+    font-size: 12px;
+}
+
+.ant-pagination-item-active a {
+    color:#5a6f08;
+    font-size: 14px;
+}
+
+.ant-input-group>.ant-input-affix-wrapper, .ant-btn{
+    height:28px
+}
+
+.ant-modal-content {
+border-radius: 15px;
+border: 2px solid #5a6f08; 
+}
+.ant-modal-close-x {
+    display: none;
+}
+
+.ant-btn-primary{
+    background-color: #5a6f08;
+}
