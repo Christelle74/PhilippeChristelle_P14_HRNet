@@ -7,8 +7,7 @@ export const columns = [
         sorter: (a, b) => a.firstName.length - b.firstName.length,
         defaultSortOrder: 'descend',
         ellipsis: true,
-        filteredValue:["i"],
-        onFilter:(value, record)=>{return String(record.firstName).toLowerCase().includes(value.toLowerCase())}
+        
     },
     {
         "title": 'Last Name',

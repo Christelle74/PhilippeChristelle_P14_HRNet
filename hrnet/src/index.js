@@ -6,12 +6,23 @@ import store from "./app/store"
 import { Provider } from 'react-redux'
 import reportWebVitals from './reportWebVitals';
 
+import { ConfigProvider } from 'antd';
+import en_GB from 'antd/lib/locale-provider/en_GB';
+import moment from 'moment';
+import 'moment/locale/en-gb'; 
+
+moment.locale('en-gb');
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ConfigProvider locale={en_GB}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ConfigProvider>
   </React.StrictMode>
 );
 

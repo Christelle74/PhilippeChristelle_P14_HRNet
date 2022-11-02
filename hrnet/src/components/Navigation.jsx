@@ -1,6 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
+/**
+ * Creation of the navigation
+ * @component
+ * @returns {JSX.Element} - Navigation component
+ */
 const Navigation = () => {
     return (
         <div className="navigation">

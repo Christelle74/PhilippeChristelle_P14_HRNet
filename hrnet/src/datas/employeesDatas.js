@@ -23,4 +23,4 @@ export const datas = [
         "state": 'Chicago',
         "zipcode":21648
     },
-];
+]

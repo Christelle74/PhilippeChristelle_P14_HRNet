@@ -15,8 +15,6 @@ const Layout = () => {
             <Logo/>
             <Navigation/>
         </header>
-            
-        
     );
 };
 

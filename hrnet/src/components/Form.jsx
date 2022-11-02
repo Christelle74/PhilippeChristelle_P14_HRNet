@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../features/employeesSlice';
+
 import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber, Modal } from 'antd';
+
 import { states } from '../datas/statesList';
 import { departments } from '../datas/departmentList';
-import { useDispatch, useSelector } from 'react-redux';
-import { addEmployee } from '../features/employeesSlice';
+//import { employeesFormatedDatas } from '../services/provider';
 
 const {Option} = Select
 
+// const employeesDatas =  employeesFormatedDatas();
+// console.log(employeesDatas)
+/**
+ * Creation of employee's create form 
+ * @component
+ * @returns {JSX.Element} - EmployeeForm component
+ */
 const EmployeeForm = () => {
-    
     const dispatch = useDispatch()
-    const employees = useSelector(state => state.employees.employeesList)
-
-    let id = 1
-    if (employees.length) {
-            id = Math.max(...employees.map(employee => employee.id))+1
-    }
-
-    console.log(employees)
-
-
+    
     const [form] = Form.useForm();
-    const [modaleVisible, setModaleVisible] = useState(false)
+    const [modaleOpen, setModaleOpen] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
     const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
-
     
     const onFinish=(values) =>{
-        console.log('all Values', {values})
-        setModaleVisible(true)
+        setModaleOpen(true)
         form.resetFields()
-        dispatch(addEmployee(values))
+        dispatch(addEmployee({...values}))
     }
-
+    
 
     return (
     <>
@@ -55,11 +53,11 @@ const EmployeeForm = () => {
                 </Form.Item>
                 
                 <Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
-                    <DatePicker style={{width:'100%'}} picker="date"/>
+                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
                 </Form.Item>
-
+                
                 <Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
-                    <DatePicker style={{width:'100%'}} picker="date"/>
+                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
                 </Form.Item>
             
             
@@ -107,8 +105,8 @@ const EmployeeForm = () => {
 
                 <Modal
                     centered
-                    visible={modaleVisible}
-                    onOk={() => setModaleVisible(false)}
+                    open={modaleOpen}
+                    onOk={() => setModaleOpen(false)}
                     cancelButtonProps={{ style: { display: "none" } }}
                     >
                     <p style={{fontSize:'20px', color:'#5a6f08', textAlign:'center' }}>New employee created !</p>

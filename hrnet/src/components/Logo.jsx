@@ -1,5 +1,11 @@
 import React from 'react';
 
+
+/**
+ * Creation of the logo 
+ * @component
+ * @returns {JSX.Element} - logo component
+ */
 const Logo = () => {
     return (
         <>
