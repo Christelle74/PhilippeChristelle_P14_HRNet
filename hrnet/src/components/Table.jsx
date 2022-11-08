@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import { Table, Input} from 'antd';
 import { columns } from '../datas/tableColumns';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmployee } from '../features/employeesSlice';
-import { employeesFormatedDatas } from '../services/provider';
+import { getAllEmployees } from '../features/employeesSlice';
+import DataFormater from "../services/dataFormater"
 
 
-const datas = employeesFormatedDatas()
-console.log(datas)
 /**
  * Creation of the table of all employees
  * @component
@@ -15,27 +13,36 @@ console.log(datas)
  */
 const EmployeeTable = () => {
     const dispatch = useDispatch()
-    //const employees = useSelector(state=>state.employees.employees)
-    console.log(datas)
+    const employees = useSelector(state=>state.employees.employeesList)
+    console.log(employees) //recupère les données json
     
+    const [data, setData] =useState([])
+    
+
     useEffect(() => {
-        if(datas.length >0) dispatch(getEmployee(datas))
-    
+        setData(employees.map((employee)=>new DataFormater(employee)))
+        console.log(employees)
+    }, [employees])
+
+    useEffect(() => {
+        dispatch(getAllEmployees())
     }, [dispatch])
+
+
 
     /**
      * global search
      */
     const [filterTable, setFilterTable] = useState(null);
     const onSearch = (value) => {
-        const filterData = datas.filter((employee) => Object.keys(employee).some((k) => String(employee[k])
-          .toLowerCase()
-          .includes(value.toLowerCase())));
+        const filterData = data.filter((employee) => Object.keys(employee).some((k) => String(employee[k])
+            .toLowerCase()
+            .includes(value.toLowerCase())));
         setFilterTable(filterData);
-      };
+    };
 
     return (
-        <>
+        <React.Fragment key={data.id}>
             <div style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
                 <Input.Search 
                     placeholder="Search by..."
@@ -48,7 +55,7 @@ const EmployeeTable = () => {
                 <Table 
                     columns={columns}
                     rowKey={(record) => record.id}
-                    dataSource={filterTable == null ? datas : filterTable} 
+                    dataSource={filterTable == null ? data : filterTable} 
                     size='middle' 
                     pagination={{
                         style:{marginTop:'30px'},
@@ -63,7 +70,7 @@ const EmployeeTable = () => {
                     scroll={{y: 240}} 
                 />
             </div>
-        </>
+        </React.Fragment>
     );
 };
 

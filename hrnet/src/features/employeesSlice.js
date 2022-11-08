@@ -1,30 +1,87 @@
-import { createSlice } from "@reduxjs/toolkit";
-import datas from '../datas/datas.json'
+import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
+import { getAllEmployeesService, addNewEmployeeService } from "../services/api";
+
+
+
+export const  addNewEmployees = createAsyncThunk('employees/addNewEmployees', async (datas, thunkAPI) => {
+    try { 
+        const data = await addNewEmployeeService(datas)
+        console.log(data)
+        return data
+
+    } catch (error) {
+        const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+export const getAllEmployees = createAsyncThunk('employees/getAllEmployees', async (thunkAPI) => {
+    try { 
+        const data= await getAllEmployeesService()
+        console.log(data)//recupère les datas du fichier json
+        return data
+        
+    } catch (error) {
+        const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+
 
 const initialState = {
-    employees :[...datas]
+    employeesList :[],
+    isLoading:false
 }
 
 export const employeesSlice = createSlice({
     name: 'employees',
     initialState,
     reducers: {
-        addEmployee :  (state, {payload}) =>{
-            const newEmployee = payload
-            const employeesList = JSON.parse(localStorage.getItem('employees')) || []
-            employeesList.push(newEmployee)
-            localStorage.setItem('employees', JSON.stringify(employeesList))
-            console.log(employeesList)
-            
-            return {...state, employees : employeesList}
+        addInList: (state, {payload}) => {
+            state.employeesList.push(payload)
         },
-        getEmployee : (state) =>{
-            const employees = JSON.parse(localStorage.getItem('employees')) || []
-            console.log(employees)
-            return {...state, employees: employees}
+        deletEmployee :(state, {payload})=>{
+            state.employeesList = state.employeesList.filter((employee) => employee.id !== payload.id)
         }
+    }, 
+    extraReducers: (builder) => {
+        builder
+        //addNewEmployee
+        .addCase(addNewEmployees.rejected, (state) => {
+            state.isLoading = false
+        })
+        .addCase(addNewEmployees.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(addNewEmployees.fulfilled, (state, {payload}) => {
+            state.isLoading = false
+            console.log('okokok',payload)
+            const newEmployee = payload
+            newEmployee.id=nanoid()
+            state.employeesList.push(newEmployee)
+            
+        })
+        //getTableEmployees
+        .addCase(getAllEmployees.rejected, (state) => {
+            state.isLoading = false
+        })
+        .addCase(getAllEmployees.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(getAllEmployees.fulfilled, (state, {payload}) => {
+            state.isLoading = false
+            console.log('okokok',payload)//recupère les données du fichier json
+            state.employeesList = payload
+        })
     }
 })
 
-export const { addEmployee, getEmployee } = employeesSlice.actions
+export const { deletEmployee } = employeesSlice.actions
 export default employeesSlice.reducer

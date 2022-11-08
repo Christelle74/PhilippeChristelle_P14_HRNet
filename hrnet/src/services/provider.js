@@ -1,15 +1,12 @@
-import EmployeesDatasFormater from "./dataFormater";
-//import datas from '../datas/datas.json'
+// import DataFormater from "./dataFormater";
+// import {getAllEmployeesService} from "./api";
 
-
-const datasToFormat = JSON.parse(localStorage.getItem('employees'))
-console.log(datasToFormat)
-
-export  function employeesFormatedDatas() {
-    let employeeDatas = []
-    employeeDatas =  datasToFormat
-    console.log(employeeDatas)
-    const newEmployeeDatas = new EmployeesDatasFormater(employeeDatas)
-    console.log(newEmployeeDatas.datas)
-    return newEmployeeDatas.datas
-}
+// export async function providerFormatedData() {
+//     let employeeDatas = []
+//     //console.log(employeeDatas)
+//     employeeDatas= await getAllEmployeesService()
+//     console.log(employeeDatas)
+//     const newEmployeeDatas = employeeDatas.map((employeeData)=> new DataFormater(employeeData))
+//     console.log(newEmployeeDatas)
+//     return newEmployeeDatas
+// }

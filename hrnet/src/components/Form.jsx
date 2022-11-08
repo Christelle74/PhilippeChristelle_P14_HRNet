@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEmployee } from '../features/employeesSlice';
-
-import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber, Modal } from 'antd';
-
+import { addNewEmployees } from '../features/employeesSlice';
+import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber } from 'antd';
 import { states } from '../datas/statesList';
 import { departments } from '../datas/departmentList';
-//import { employeesFormatedDatas } from '../services/provider';
+import {Modal} from "modal-lib"
 
 const {Option} = Select
 
-// const employeesDatas =  employeesFormatedDatas();
-// console.log(employeesDatas)
 /**
  * Creation of employee's create form 
  * @component
@@ -21,17 +17,16 @@ const EmployeeForm = () => {
     const dispatch = useDispatch()
     
     const [form] = Form.useForm();
-    const [modaleOpen, setModaleOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
     const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
     
     const onFinish=(values) =>{
-        setModaleOpen(true)
+        dispatch(addNewEmployees({...values}))
+        setModalOpen(true)
         form.resetFields()
-        dispatch(addEmployee({...values}))
     }
     
-
     return (
     <>
         <Space direction="vertical" size='small'>
@@ -102,16 +97,7 @@ const EmployeeForm = () => {
                 <Form.Item  wrapperCol={{ span: 24}}>
                     <Button block style={{background: '#5b8c00', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
-
-                <Modal
-                    centered
-                    open={modaleOpen}
-                    onOk={() => setModaleOpen(false)}
-                    cancelButtonProps={{ style: { display: "none" } }}
-                    >
-                    <p style={{fontSize:'20px', color:'#5a6f08', textAlign:'center' }}>New employee created !</p>
-                </Modal>
-                
+                <Modal showModal={modalOpen} hideModal={() => setModalOpen(false)} message="New employee created !"/>
             </Form>
             
         </Space>

@@ -87,6 +87,11 @@ a{
     font-size: 12px;
 }
 
+.ant-table-cell a{
+    color:#5a6f08;
+    font-size: 14px;
+    font-weight: 700;
+}
 .ant-pagination-item-active a {
     color:#5a6f08;
     font-size: 14px;
