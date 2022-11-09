@@ -42,7 +42,7 @@ const EmployeeTable = () => {
     };
 
     return (
-        <React.Fragment key={data.id}>
+        <>
             <div style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
                 <Input.Search 
                     placeholder="Search by..."
@@ -54,7 +54,7 @@ const EmployeeTable = () => {
             <div style={{margin: 20}}>
                 <Table 
                     columns={columns}
-                    rowKey={(record) => record.id}
+                    rowKey={(employee) => employee.id}
                     dataSource={filterTable == null ? data : filterTable} 
                     size='middle' 
                     pagination={{
@@ -70,7 +70,7 @@ const EmployeeTable = () => {
                     scroll={{y: 240}} 
                 />
             </div>
-        </React.Fragment>
+        </>
     );
 };
 

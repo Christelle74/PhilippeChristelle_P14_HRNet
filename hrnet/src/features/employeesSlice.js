@@ -44,9 +44,9 @@ export const employeesSlice = createSlice({
     name: 'employees',
     initialState,
     reducers: {
-        addInList: (state, {payload}) => {
-            state.employeesList.push(payload)
-        },
+        // addInList: (state, {payload}) => {
+        //     state.employeesList.push(payload)
+        // },
         deletEmployee :(state, {payload})=>{
             state.employeesList = state.employeesList.filter((employee) => employee.id !== payload.id)
         }

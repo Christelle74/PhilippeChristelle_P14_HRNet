@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNewEmployees } from '../features/employeesSlice';
 import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber } from 'antd';
 import { states } from '../datas/statesList';
@@ -15,14 +15,15 @@ const {Option} = Select
  */
 const EmployeeForm = () => {
     const dispatch = useDispatch()
-    
+    const allEmployees = useSelector((state)=>state.employees.employeesList)
     const [form] = Form.useForm();
     const [modalOpen, setModalOpen] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
     const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
     
     const onFinish=(values) =>{
-        dispatch(addNewEmployees({...values}))
+        values.id = allEmployees.length + 1;
+        dispatch(addNewEmployees({values}))
         setModalOpen(true)
         form.resetFields()
     }
