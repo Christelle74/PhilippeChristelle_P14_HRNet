@@ -17,14 +17,14 @@ const EmployeeForm = () => {
     const dispatch = useDispatch()
     const allEmployees = useSelector((state)=>state.employees.employeesList)
     const [form] = Form.useForm();
-    const [modalOpen, setModalOpen] = useState(false)
+    const [displayModal, setDisplayModal] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
     const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
     
     const onFinish=(values) =>{
         values.id = allEmployees.length + 1;
         dispatch(addNewEmployees({values}))
-        setModalOpen(true)
+        setDisplayModal(true)
         form.resetFields()
     }
     
@@ -98,7 +98,20 @@ const EmployeeForm = () => {
                 <Form.Item  wrapperCol={{ span: 24}}>
                     <Button block style={{background: '#5b8c00', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
-                <Modal showModal={modalOpen} hideModal={() => setModalOpen(false)} message="New employee created !"/>
+                <Modal 
+                    // modalStyle={modalStyle} 
+                    // modalHeaderStyle={modalHeaderStyle} 
+                    // modalBodyStyle={modalBodyStyle} 
+                    // modalFooterStyle={modalFooterStyle} 
+                    // xButtonStyle={xButtonStyle} 
+                    // footerButtonStyle={footerButtonStyle} 
+                    title="Confirmation" 
+                    message="New employee created !" 
+                    buttonText1="Ok"
+                    buttonText2="Cancel"
+                    showModal={displayModal} 
+                    hideModal={()=>setDisplayModal(false)} 
+                />
             </Form>
             
         </Space>

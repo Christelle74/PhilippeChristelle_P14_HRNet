@@ -4,6 +4,8 @@ const ObjectId = require('mongoose').Types.ObjectId
 
 const  { EmployeeModel } = require("../models/employeeModel")
 
+
+// get route
 router.get('/', (req, res) => {
     EmployeeModel.find((err, docs) => {
         if(!err) res.send(docs);
@@ -11,6 +13,8 @@ router.get('/', (req, res) => {
     })
 })
 
+
+//post route
 router.post('/', (req, res) => {
     console.log(req.body.datas)
     const newEmployee = new EmployeeModel({
@@ -23,6 +27,8 @@ router.post('/', (req, res) => {
     })
 })
 
+
+//delete route
 router.delete('/:id', (req, res)=>{
     if(!ObjectId.isValid(req.params.id))
         return res.status(400).send("ID unknown :" + req.params.id)

@@ -4,7 +4,10 @@ import Employees from './pages/Employees';
 import CreateEmployee from './pages/CreateEmployee';
 import Home from './pages/Home';
 
-
+/**
+ * Creation of pages routes
+ * @returns App component
+ */
 const App = () => {
   return (
     <>

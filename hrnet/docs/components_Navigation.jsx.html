@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>pages/Home.jsx - Documentation</title>
+    <title>components/Navigation.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">pages/Home.jsx</h1>
+    <h1 class="page-title">components/Navigation.jsx</h1>
     
 
     
@@ -43,42 +43,39 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import { Avatar, Card } from 'antd';
-import Logo from '../components/Logo';
+import { NavLink } from 'react-router-dom';
+
 
 /**
- * Creation of the home page connexion with logo and navigation
+ * Creation of the navigation
  * @component
- * @returns {JSX.Element} - Home component
+ * @returns {JSX.Element} - Navigation component
  */
-const Home = () => {
+const Navigation = () => {
     return (
-        &lt;main style={{width:'100%'}}>
-            &lt;Logo/>
-            &lt;div style={{display:'flex', flexDirection: 'column', alignItems:'center', width: "100%"}}>
-                &lt;li >
-                    &lt;Link to="/createemployee" className='userCard'>
-                        &lt;Card style={{ width: 300, marginTop: 50 }}>
-                            &lt;Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" size={50}/>
-                            &lt;p style={{marginTop: 20, color:'#5a6f08', fontSize:16, fontWeight:700 }}>Administrator&lt;/p>
-                        &lt;/Card>
-                    &lt;/Link>
+        &lt;div className="navigation">
+            &lt;ul>
+                &lt;li>
+                    &lt;NavLink to="/createEmployee" className={({isActive}) => isActive ? 'navActive' : ''}end>
+                        Create New Employee
+                    &lt;/NavLink>
+                &lt;/li>  
+                &lt;li>                  
+                    &lt;NavLink to="/employees" className={({isActive})=> isActive ? 'navActive' : ''}end>
+                        View Current Employees
+                    &lt;/NavLink>
                 &lt;/li>
-                &lt;li >
-                    &lt;Link to="" className='userCard'>
-                        &lt;Card style={{ width: 300, marginTop: 50 }}>
-                            &lt;Avatar  size={50}>User&lt;/Avatar>
-                            &lt;p style={{ marginTop: 20, color:'#5a6f08', fontSize:16, fontWeight:700 }}>User&lt;/p>
-                        &lt;/Card>
-                    &lt;/Link>
+                &lt;li>                  
+                    &lt;NavLink to="/" className={({isActive})=> isActive ? 'navActive' : ''}end>
+                        Deconnect
+                    &lt;/NavLink>
                 &lt;/li>
-            &lt;/div>
-        &lt;/main>
+            &lt;/ul>
+        &lt;/div>
     );
 };
 
-export default Home;</code></pre>
+export default Navigation;</code></pre>
         </article>
     </section>
 

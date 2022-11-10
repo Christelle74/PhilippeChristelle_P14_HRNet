@@ -14,7 +14,11 @@ import 'moment/locale/en-gb';
 moment.locale('en-gb');
 
 
-
+/**
+ * @file root folder of the application
+ * @author Christelle Philippe
+ * @see <a href="https://github.com/Christelle74/PhilippeChristelle_P14_HRNet/" target="_blank"> repo Git </a>
+ */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

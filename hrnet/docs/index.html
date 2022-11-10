@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Employees">Employees</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewEmployeeService">addNewEmployeeService</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#deleteEmployeeService">deleteEmployeeService</a></li><li><a href="global.html#EmployeeForm">EmployeeForm</a></li><li><a href="global.html#Employees">Employees</a></li><li><a href="global.html#EmployeeTable">EmployeeTable</a></li><li><a href="global.html#getAllEmployeesService">getAllEmployeesService</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Logo">Logo</a></li><li><a href="global.html#Navigation">Navigation</a></li></ul>
 </nav>
 
 <div id="main">
@@ -66,28 +66,41 @@
 <hr>
 <p><img src="/hrnet/public/wealthHealth.png" alt="logo"></p>
 <h2>Presentation</h2>
-<p>HRnet project is an application of employees's folder gestion</p>
+<p>HRnet project is an application of employees's folder gestion for Wealth Health.</p>
 <h2>Prerequisites</h2>
+<p><strong>1 - Front-end :</strong></p>
 <ul>
 <li><a href="https://nodejs.org/en/">NodeJS (<strong>version 16.17.0</strong>)</a></li>
 <li><a href="https://www.npmjs.com/">NPM (<strong>version 8.15.0</strong>)</a></li>
 <li><a href="https://en.reactjs.org/">REACT (<strong>version 18.2.0</strong>)</a></li>
-<li>Redux toolkit</li>
-<li>VsCode</li>
+<li><a href="https://redux-toolkit.js.org/">REDUX TOOLKIT (<strong>version 1.8.6</strong>)</a></li>
+<li><a href="https://code.visualstudio.com/">VSCODE</a></li>
+<li><a href="https://ant.design/">ANT DESIGN (<strong>version 4.23.5</strong>)</a></li>
+</ul>
+<p><strong>2 - Back-end :</strong></p>
+<ul>
+<li><a href="https://www.mongodb.com/fr-fr">MONGODB (<strong>version 4.23.5</strong>)</a></li>
+<li><a href="https://expressjs.com/fr/">EXPRESS (<strong>version 4.18.2</strong>)</a></li>
+<li><a href="https://mongoosejs.com/">MONGOOSE (<strong>version 6.7.2</strong>)</a></li>
 </ul>
 <p>If you are working with several versions of NodeJS, we recommend you install <a href="https://github.com/nvm-sh/nvm">nvm</a>. This tool will allow you to easily manage your NodeJS versions.</p>
 <h2>Installing the app</h2>
 <ul>
-<li>
-<p>Forke and clone the repository :</p>
-</li>
-<li>
-<p>Run the <code>npm</code> command will allow you to install the dependencies</p>
-</li>
-<li>
-<p>FrontEnd:
-open a new terminal, <code>cd hrnet</code> then run the <code>npm start</code> command will allow you to run the application on http://localhost:3000</p>
-</li>
+<li>Forke and clone the repository :</li>
+<li>Run the <code>npm</code> command will allow you to install the dependencies</li>
+</ul>
+<p><strong>1- BackEnd :</strong></p>
+<ul>
+<li>run mongo on your computer</li>
+<li>then on VSCode, open the terminal</li>
+<li>run <code>cd backEnd</code>,</li>
+<li>then run the npm start command that will allow you to see datas on http://localhost:3001/employees</li>
+</ul>
+<p><strong>2- FrontEnd :</strong></p>
+<ul>
+<li>open a new terminal</li>
+<li>run <code>cd hrnet</code></li>
+<li>then run the <code>npm start</code> command that will allow you to run the application on http://localhost:3000</li>
 </ul>
 <h2>Author</h2>
 <p>Christelle Philippe</p>
@@ -137,6 +150,118 @@ Your app is ready to be deployed!</p>
 
 
 
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        index.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Christelle Philippe</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/Christelle74/PhilippeChristelle_P14_HRNet/" target="_blank"> repo Git </a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+            
+                <div class="description usertext"><p>root folder of the application</p></div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
     
     
 </div>
@@ -144,7 +269,7 @@ Your app is ready to be deployed!</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Mon Oct 24 2022 14:29:56 GMT+0200 (heure d’été d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Nov 10 2022 10:53:13 GMT+0100 (heure normale d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

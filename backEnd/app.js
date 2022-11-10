@@ -5,16 +5,16 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 
-//crée l'application express
+//create express application
 const app = express()
 const port = 3001
 
 app.use(bodyParser.json())
-app.use(cors())// donne l'accès à l'extérieur
+app.use(cors())// give external access
 app.use('/employees', employeesRoutes)// '/' = url/employees
 
 
-//démarrer le serveur et écouter un port donné
+//start the server and listen the given port
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })

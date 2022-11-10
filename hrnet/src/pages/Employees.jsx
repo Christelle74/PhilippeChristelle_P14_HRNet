@@ -3,7 +3,7 @@ import React from 'react';
 import EmployeeTable from '../components/Table';
 
 /**
- * Display the employees page that contains the employeeTable component
+ * Display the employees page that contains the Table component
  * @component
  * @returns {JSX.Element} - Employees component
  */

@@ -7,27 +7,24 @@ import DataFormater from "../services/dataFormater"
 
 
 /**
- * Creation of the table of all employees
+ * Creation of the table displaying all employees
  * @component
  * @returns {JSX.Element} - EmployeeTable component
  */
 const EmployeeTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
-    console.log(employees) //recupère les données json
     
     const [data, setData] =useState([])
     
-
     useEffect(() => {
         setData(employees.map((employee)=>new DataFormater(employee)))
-        console.log(employees)
+        //console.log(employees)
     }, [employees])
 
     useEffect(() => {
         dispatch(getAllEmployees())
     }, [dispatch])
-
 
 
     /**
@@ -68,10 +65,12 @@ const EmployeeTable = () => {
                         )
                     }} 
                     scroll={{y: 240}} 
-                />
+                >
+                </Table>   
             </div>
         </>
     );
+    
 };
 
 export default EmployeeTable;

@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
-import { getAllEmployeesService, addNewEmployeeService } from "../services/api";
+import { getAllEmployeesService, addNewEmployeeService, deleteEmployeeService } from "../services/api";
 
 
 
 export const  addNewEmployees = createAsyncThunk('employees/addNewEmployees', async (datas, thunkAPI) => {
     try { 
         const data = await addNewEmployeeService(datas)
-        console.log(data)
+        //console.log(data)
         return data
 
     } catch (error) {
@@ -21,7 +21,22 @@ export const  addNewEmployees = createAsyncThunk('employees/addNewEmployees', as
 export const getAllEmployees = createAsyncThunk('employees/getAllEmployees', async (thunkAPI) => {
     try { 
         const data= await getAllEmployeesService()
-        console.log(data)//recupère les datas du fichier json
+        //console.log(data)
+        return data
+        
+    } catch (error) {
+        const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+export const deleteEmployee = createAsyncThunk('employees/deleteEmployee', async (thunkAPI) => {
+    try { 
+        const data= await deleteEmployeeService()
+        //console.log(data)
         return data
         
     } catch (error) {
@@ -44,9 +59,6 @@ export const employeesSlice = createSlice({
     name: 'employees',
     initialState,
     reducers: {
-        // addInList: (state, {payload}) => {
-        //     state.employeesList.push(payload)
-        // },
         deletEmployee :(state, {payload})=>{
             state.employeesList = state.employeesList.filter((employee) => employee.id !== payload.id)
         }
@@ -62,7 +74,6 @@ export const employeesSlice = createSlice({
         })
         .addCase(addNewEmployees.fulfilled, (state, {payload}) => {
             state.isLoading = false
-            console.log('okokok',payload)
             const newEmployee = payload
             newEmployee.id=nanoid()
             state.employeesList.push(newEmployee)
@@ -77,7 +88,6 @@ export const employeesSlice = createSlice({
         })
         .addCase(getAllEmployees.fulfilled, (state, {payload}) => {
             state.isLoading = false
-            console.log('okokok',payload)//recupère les données du fichier json
             state.employeesList = payload
         })
     }

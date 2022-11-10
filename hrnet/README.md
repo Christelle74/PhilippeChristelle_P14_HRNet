@@ -15,12 +15,19 @@
 HRnet project is an application of employees's folder gestion for Wealth Health.
 
 ## Prerequisites
-
+**1 - Front-end :**
 - [NodeJS (**version 16.17.0**)](https://nodejs.org/en/)
 - [NPM (**version 8.15.0**)](https://www.npmjs.com/)
 - [REACT (**version 18.2.0**)](https://en.reactjs.org/)
-- Redux toolkit
-- VsCode
+- [REDUX TOOLKIT (**version 1.8.6**)](https://redux-toolkit.js.org/)
+- [VSCODE](https://code.visualstudio.com/)
+- [ANT DESIGN (**version 4.23.5**)](https://ant.design/)
+
+**2 - Back-end :**
+- [MONGODB (**version 4.23.5**)](https://www.mongodb.com/fr-fr)
+- [EXPRESS (**version 4.18.2**)](https://expressjs.com/fr/)
+- [MONGOOSE (**version 6.7.2**)](https://mongoosejs.com/)
+
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
@@ -29,8 +36,16 @@ If you are working with several versions of NodeJS, we recommend you install [nv
 - Forke and clone the repository : 
 - Run the `npm` command will allow you to install the dependencies
 
-- FrontEnd:
-  open a new terminal, `cd hrnet` then run the `npm start` command will allow you to run the application on http://localhost:3000
+**1- BackEnd :**
+  - run mongo on your computer
+  - then on VSCode, open the terminal
+  - run `cd backEnd`,
+  - then run the npm start command that will allow you to see datas on http://localhost:3001/employees
+
+**2- FrontEnd :**
+  - open a new terminal
+  - run `cd hrnet` 
+  - then run the `npm start` command that will allow you to run the application on http://localhost:3000
 
 ## Author
 

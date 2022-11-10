@@ -73,13 +73,12 @@ export const columns = [
         sorter: (a, b) => a.zipcode - b.zipcode,
         ellipsis: true,
     },
-    {
-        "title": 'Delete',
-        "dataIndex": 'delete',
-        "key": 'x',
-        width: '4rem',
-        align:'center',
-        render: () => <a>X</a>,
-        
-    },
+    // {
+    //     "title": 'Action',
+    //     "dataIndex": '',
+    //     "key": 'X',
+    //     width: '4rem',
+    //     align:'center',
+    //     render: () => <a>X</a>,
+    // },
 ];

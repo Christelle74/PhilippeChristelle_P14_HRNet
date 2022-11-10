@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>pages/Home.jsx - Documentation</title>
+    <title>services/dataFormater.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">pages/Home.jsx</h1>
+    <h1 class="page-title">services/dataFormater.js</h1>
     
 
     
@@ -42,43 +42,44 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import { Avatar, Card } from 'antd';
-import Logo from '../components/Logo';
-
+            <pre class="prettyprint source linenums"><code>
 /**
- * Creation of the home page connexion with logo and navigation
- * @component
- * @returns {JSX.Element} - Home component
- */
-const Home = () => {
-    return (
-        &lt;main style={{width:'100%'}}>
-            &lt;Logo/>
-            &lt;div style={{display:'flex', flexDirection: 'column', alignItems:'center', width: "100%"}}>
-                &lt;li >
-                    &lt;Link to="/createemployee" className='userCard'>
-                        &lt;Card style={{ width: 300, marginTop: 50 }}>
-                            &lt;Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" size={50}/>
-                            &lt;p style={{marginTop: 20, color:'#5a6f08', fontSize:16, fontWeight:700 }}>Administrator&lt;/p>
-                        &lt;/Card>
-                    &lt;/Link>
-                &lt;/li>
-                &lt;li >
-                    &lt;Link to="" className='userCard'>
-                        &lt;Card style={{ width: 300, marginTop: 50 }}>
-                            &lt;Avatar  size={50}>User&lt;/Avatar>
-                            &lt;p style={{ marginTop: 20, color:'#5a6f08', fontSize:16, fontWeight:700 }}>User&lt;/p>
-                        &lt;/Card>
-                    &lt;/Link>
-                &lt;/li>
-            &lt;/div>
-        &lt;/main>
-    );
-};
-
-export default Home;</code></pre>
+* @constructor
+* @description class to format employees datas
+* Represents an employee
+* @param {string} firstName - The firstname of the employee.
+* @param {string} lastName - The lastname of the employee.
+* @param {string} birthdate - The birthdate of the employee.
+* @param {string} startDate - The date the employee starts his job.
+* @param {string} departement - The department where the employee is working.
+* @param {string} street - The street adress of the employee.
+* @param {string} city - The city adress of the employee.
+* @param {string} state - The state where the employee is living.
+* @param {number} zipcode - The zipcode of the city.
+*/
+export default class DataFormater {
+    constructor({_id, firstName, lastName, birthdate, startDate, department, street, city, state, zipcode}) {
+        this.id = _id
+        this.firstName = this.formatName(firstName)
+        this.lastName = this.formatName(lastName)
+        this.birthdate = this.formatDate(birthdate)
+        this.startDate = this.formatDate(startDate)
+        this.department = this.formatName(department)
+        this.street= this.formatName(street)
+        this.city = this.formatName(city)
+        this.state = state
+        this.zipcode = zipcode
+    }
+    
+    formatName(string){
+        const stringLower = string.toLowerCase()
+        const stringFormat = stringLower.replace(/(^\w{1})|(\s+\w{1})/g, x => x.toUpperCase())
+        return stringFormat
+    }
+    formatDate(date){
+        return new Date(date).toLocaleDateString("fr")
+    }
+}</code></pre>
         </article>
     </section>
 

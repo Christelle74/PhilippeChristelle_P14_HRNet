@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/Form.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewEmployeeService">addNewEmployeeService</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#deleteEmployeeService">deleteEmployeeService</a></li><li><a href="global.html#EmployeeForm">EmployeeForm</a></li><li><a href="global.html#Employees">Employees</a></li><li><a href="global.html#EmployeeTable">EmployeeTable</a></li><li><a href="global.html#getAllEmployeesService">getAllEmployeesService</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Logo">Logo</a></li><li><a href="global.html#Navigation">Navigation</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Form.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewEmployees } from '../features/employeesSlice';
+import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber } from 'antd';
+import { states } from '../datas/statesList';
+import { departments } from '../datas/departmentList';
+import {Modal} from "modal-lib"
+
+const {Option} = Select
+
+/**
+ * Creation of employee's create form 
+ * @component
+ * @returns {JSX.Element} - EmployeeForm component
+ */
+const EmployeeForm = () => {
+    const dispatch = useDispatch()
+    const allEmployees = useSelector((state)=>state.employees.employeesList)
+    const [form] = Form.useForm();
+    const [displayModal, setDisplayModal] = useState(false)
+    const [componentSize, setComponentSize] = useState('small')
+    const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
+    
+    const onFinish=(values) =>{
+        values.id = allEmployees.length + 1;
+        dispatch(addNewEmployees({values}))
+        setDisplayModal(true)
+        form.resetFields()
+    }
+    
+    return (
+    &lt;>
+        &lt;Space direction="vertical" size='small'>
+            
+            &lt;Form 
+                form ={form}
+                initialValues={{size: componentSize}}
+                onValuesChange={onFormLayoutChange}
+                size={componentSize}
+                autoComplete='off'
+                onFinish={onFinish}
+                >
+                &lt;Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a first name'/>
+                &lt;/Form.Item>
+                
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Last Name" name='lastName' rules={[{required: true, message: 'Please enter the last name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a last name'  />
+                &lt;/Form.Item>
+                
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
+                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                &lt;/Form.Item>
+                
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
+                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                &lt;/Form.Item>
+            
+            
+                &lt;Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Address&lt;/Divider>
+    
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Street" name='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input  placeholder='Type a street'   />
+                &lt;/Form.Item>
+                
+                &lt;Form.Item labelCol={{ span: 24 }} label="City" name='city' rules={[{required: true, message: 'Please enter the city'},{whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a city'   />
+                &lt;/Form.Item>
+                
+                &lt;Form.Item labelCol={{ span: 24 }} label="State" name='state' rules={[{required: true, message: 'Please select a state'}]}>
+                    &lt;Select
+                        placeholder="Choose a State"
+                        allowClear
+                    >
+                        {states.map((state) => (
+                            &lt;Option  value={state.name} key={state.abbreviation}>{state.name}&lt;/Option>
+                        ))}
+                    &lt;/Select>
+                &lt;/Form.Item>
+                
+                &lt;Form.Item labelCol={{ span: 24 }} label="Zip Code" name='zipcode' rules={[{required: true, message: 'Please select a zip code', type: 'number', min: 0, max: 99999}]}>
+                    &lt;InputNumber style={{width:'100%'}} placeholder='Type a zip code'/>
+                &lt;/Form.Item>
+
+                &lt;Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Department&lt;/Divider>
+                
+                &lt;Form.Item labelCol={{ span: 24 }} label="" wrapperCol={{ span: 24}} name='department' rules={[{required: true, message: 'Please select a department'}]}>
+                    &lt;Select
+                        placeholder="Choose a department"
+                
+                    >
+                        {departments.map((department) => (
+                            &lt;Option value={department.name} key={department.id}>{department.name}&lt;/Option>
+                        ))}
+                    &lt;/Select>
+                &lt;/Form.Item>
+
+                &lt;Form.Item  wrapperCol={{ span: 24}}>
+                    &lt;Button block style={{background: '#5b8c00', color: 'white', width:'100%'}} htmlType="submit" >Save&lt;/Button>
+                &lt;/Form.Item>
+                &lt;Modal 
+                    // modalStyle={modalStyle} 
+                    // modalHeaderStyle={modalHeaderStyle} 
+                    // modalBodyStyle={modalBodyStyle} 
+                    // modalFooterStyle={modalFooterStyle} 
+                    // xButtonStyle={xButtonStyle} 
+                    // footerButtonStyle={footerButtonStyle} 
+                    title="Confirmation" 
+                    message="New employee created !" 
+                    buttonText1="Ok"
+                    buttonText2="Cancel"
+                    showModal={displayModal} 
+                    hideModal={()=>setDisplayModal(false)} 
+                />
+            &lt;/Form>
+            
+        &lt;/Space>
+    &lt;/>
+    );
+}
+
+
+export default EmployeeForm</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Nov 10 2022 10:53:13 GMT+0100 (heure normale d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

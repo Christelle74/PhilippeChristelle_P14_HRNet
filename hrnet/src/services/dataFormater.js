@@ -1,17 +1,21 @@
 
 /**
- * @class
- * @description class to format employees datas
- */
+* @constructor
+* @description class to format employees datas
+* Represents an employee
+* @param {string} firstName - The firstname of the employee.
+* @param {string} lastName - The lastname of the employee.
+* @param {string} birthdate - The birthdate of the employee.
+* @param {string} startDate - The date the employee starts his job.
+* @param {string} departement - The department where the employee is working.
+* @param {string} street - The street adress of the employee.
+* @param {string} city - The city adress of the employee.
+* @param {string} state - The state where the employee is living.
+* @param {number} zipcode - The zipcode of the city.
+*/
 export default class DataFormater {
-    
-    /**
-   * The function takes in an object, and then assigns the values of the object to the properties of
-   * the class.
-   * @param {Object} data - employees datas
-   */
-    constructor({firstName, lastName, birthdate, startDate, department, street, city, state, zipcode}) {
-        //this.firstName = firstName
+    constructor({_id, firstName, lastName, birthdate, startDate, department, street, city, state, zipcode}) {
+        this.id = _id
         this.firstName = this.formatName(firstName)
         this.lastName = this.formatName(lastName)
         this.birthdate = this.formatDate(birthdate)
@@ -21,9 +25,6 @@ export default class DataFormater {
         this.city = this.formatName(city)
         this.state = state
         this.zipcode = zipcode
-    
-    console.log(this.firstName)
-    console.log(this.birthdate)
     }
     
     formatName(string){
