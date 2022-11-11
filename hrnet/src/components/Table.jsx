@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllEmployees } from '../features/employeesSlice';
 import DataFormater from "../services/dataFormater"
 
-
 /**
  * Creation of the table displaying all employees
  * @component
@@ -14,7 +13,6 @@ import DataFormater from "../services/dataFormater"
 const EmployeeTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
-    
     const [data, setData] =useState([])
     
     useEffect(() => {
@@ -55,6 +53,7 @@ const EmployeeTable = () => {
                     dataSource={filterTable == null ? data : filterTable} 
                     size='middle' 
                     pagination={{
+                        
                         style:{marginTop:'30px'},
                         pageSize:10, 
                         showSizeChanger:true,

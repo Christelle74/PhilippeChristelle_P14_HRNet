@@ -40,37 +40,38 @@ const EmployeeForm = () => {
                 autoComplete='off'
                 onFinish={onFinish}
                 >
-                <Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
-                    <Input placeholder='Type a first name'/>
+                <Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' htmlFor='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    <Input placeholder='Type a first name' name='firstName'/>
                 </Form.Item>
                 
-                <Form.Item  labelCol={{ span: 24 }} label="Last Name" name='lastName' rules={[{required: true, message: 'Please enter the last name'}, {whitespace:true}, {min:3}]} hasFeedback>
-                    <Input placeholder='Type a last name'  />
+                <Form.Item  labelCol={{ span: 24 }} label="Last Name" name='lastName'htmlFor='lastName' rules={[{required: true, message: 'Please enter the last name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    <Input placeholder='Type a last name' name='lastName'/>
                 </Form.Item>
                 
-                <Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
-                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                <Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' htmlFor='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
+                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY' name='birthdate'/>
                 </Form.Item>
                 
-                <Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
-                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                <Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' htmlFor='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
+                    <DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY' name='startDate'/>
                 </Form.Item>
             
             
                 <Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Address</Divider>
     
-                <Form.Item  labelCol={{ span: 24 }} label="Street" name='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
-                    <Input  placeholder='Type a street'   />
+                <Form.Item  labelCol={{ span: 24 }} label="Street" name='street' htmlFor='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
+                    <Input  placeholder='Type a street'  name='street'/>
                 </Form.Item>
                 
-                <Form.Item labelCol={{ span: 24 }} label="City" name='city' rules={[{required: true, message: 'Please enter the city'},{whitespace:true}, {min:3}]} hasFeedback>
-                    <Input placeholder='Type a city'   />
+                <Form.Item labelCol={{ span: 24 }} label="City" name='city' htmlFor='city' rules={[{required: true, message: 'Please enter the city'},{whitespace:true}, {min:3}]} hasFeedback>
+                    <Input placeholder='Type a city' name='city'/>
                 </Form.Item>
                 
-                <Form.Item labelCol={{ span: 24 }} label="State" name='state' rules={[{required: true, message: 'Please select a state'}]}>
+                <Form.Item labelCol={{ span: 24 }} label="State" name='state' htmlFor='state' rules={[{required: true, message: 'Please select a state'}]}>
                     <Select
                         placeholder="Choose a State"
                         allowClear
+                        name='state'
                     >
                         {states.map((state) => (
                             <Option  value={state.name} key={state.abbreviation}>{state.name}</Option>
@@ -78,16 +79,16 @@ const EmployeeForm = () => {
                     </Select>
                 </Form.Item>
                 
-                <Form.Item labelCol={{ span: 24 }} label="Zip Code" name='zipcode' rules={[{required: true, message: 'Please select a zip code', type: 'number', min: 0, max: 99999}]}>
-                    <InputNumber style={{width:'100%'}} placeholder='Type a zip code'/>
+                <Form.Item labelCol={{ span: 24 }} label="Zip Code" name='zipcode' htmlFor='zipcode' rules={[{required: true, message: 'Please select a zip code', type: 'number', min: 0, max: 99999}]}>
+                    <InputNumber style={{width:'100%'}} placeholder='Type a zip code' name='zipcode'/>
                 </Form.Item>
 
                 <Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Department</Divider>
                 
-                <Form.Item labelCol={{ span: 24 }} label="" wrapperCol={{ span: 24}} name='department' rules={[{required: true, message: 'Please select a department'}]}>
+                <Form.Item labelCol={{ span: 24 }} label="" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
                     <Select
                         placeholder="Choose a department"
-                
+                        name='department'
                     >
                         {departments.map((department) => (
                             <Option value={department.name} key={department.id}>{department.name}</Option>
