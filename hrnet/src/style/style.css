@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #d6db99a9;
+    background-color: #f6f8cf;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -49,18 +49,22 @@ ul{
     margin-top: 20px;
 }
 .navActive{
-    color:#5a6f08;
+    color:#5a6f06;
     text-decoration-line: underline;
+    font-size: 18px;
+    font-weight: 700;
 }
 a{
     text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #3070ab;
 }
 
 
 .ant-form-item-label label, .ant-picker-panel, .ant-form-item-explain-error{
     font-size: 12px;
+    font-weight: 700;
 }
 
 .ant-space{
@@ -73,27 +77,27 @@ a{
     background-color:#d6db99a9
 }
 .ant-picker-today-btn, .ant-table-column-sorter-down.active, .ant-table-column-sorter-up.active, .ant-picker-header-view {
-    color:#5a6f08;
+    color:#5a6f06;
 }
 .ant-input-affix-wrapper, .ant-picker, .ant-select, .ant-input-number, .ant-pagination-item-active, .ant-btn {
-    border: 1px solid #5a6f08;
+    border: 1px solid #5a6f06;
 }
 
 .ant-table-column-title{
     font-weight: 700;
-    color:#5a6f08;
+    color:#5a6f06;
 }
 .ant-table-body{
     font-size: 12px;
 }
 
 .ant-table-cell a{
-    color:#5a6f08;
+    color:#5a6f06;
     font-size: 14px;
     font-weight: 700;
 }
 .ant-pagination-item-active a {
-    color:#5a6f08;
+    color:#5a6f06;
     font-size: 14px;
 }
 
@@ -103,12 +107,12 @@ a{
 
 .ant-modal-content {
 border-radius: 15px;
-border: 2px solid #5a6f08; 
+border: 2px solid #5a6f06; 
 }
 .ant-modal-close-x {
     display: none;
 }
 
 .ant-btn-primary{
-    background-color: #5a6f08;
+    background-color: #5a6f06;
 }

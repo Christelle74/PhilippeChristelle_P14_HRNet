@@ -12,12 +12,12 @@ const Navigation = () => {
         <div className="navigation">
             <ul>
                 <li>
-                    <NavLink to="/createEmployee" className={({isActive}) => isActive ? 'navActive' : ''}end>
+                    <NavLink to="/createEmployee" aria-current="page" className={({isActive}) => isActive ? 'navActive' : ''}end>
                         Create New Employee
                     </NavLink>
                 </li>  
                 <li>                  
-                    <NavLink to="/employees" className={({isActive})=> isActive ? 'navActive' : ''}end>
+                    <NavLink to="/employees" aria-current="page" className={({isActive})=> isActive ? 'navActive' : ''}end>
                         View Current Employees
                     </NavLink>
                 </li>

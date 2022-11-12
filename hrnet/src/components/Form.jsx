@@ -57,7 +57,7 @@ const EmployeeForm = () => {
                 </Form.Item>
             
             
-                <Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Address</Divider>
+                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Address</Divider>
     
                 <Form.Item  labelCol={{ span: 24 }} label="Street" name='street' htmlFor='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
                     <Input  placeholder='Type a street'  name='street'/>
@@ -72,6 +72,10 @@ const EmployeeForm = () => {
                         placeholder="Choose a State"
                         allowClear
                         name='state'
+                        aria-expanded='true'
+                        aria-owns='state'
+                        aria-controls='state'
+                        aria-activedescendant=""
                     >
                         {states.map((state) => (
                             <Option  value={state.name} key={state.abbreviation}>{state.name}</Option>
@@ -83,12 +87,16 @@ const EmployeeForm = () => {
                     <InputNumber style={{width:'100%'}} placeholder='Type a zip code' name='zipcode'/>
                 </Form.Item>
 
-                <Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Department</Divider>
+                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Department</Divider>
                 
-                <Form.Item labelCol={{ span: 24 }} label="" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
+                <Form.Item labelCol={{ span: 24 }} label="department" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
                     <Select
                         placeholder="Choose a department"
                         name='department'
+                        aria-expanded='true'
+                        aria-owns='department'
+                        aria-controls='department'
+                        aria-activedescendant=""
                     >
                         {departments.map((department) => (
                             <Option value={department.name} key={department.id}>{department.name}</Option>
@@ -97,7 +105,7 @@ const EmployeeForm = () => {
                 </Form.Item>
 
                 <Form.Item  wrapperCol={{ span: 24}}>
-                    <Button block style={{background: '#5b8c00', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
+                    <Button block style={{background: '#5a6f06', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
                 <Modal 
                     // modalStyle={modalStyle} 

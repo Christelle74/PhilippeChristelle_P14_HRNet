@@ -53,7 +53,6 @@ const EmployeeTable = () => {
                     dataSource={filterTable == null ? data : filterTable} 
                     size='middle' 
                     pagination={{
-                        
                         style:{marginTop:'30px'},
                         pageSize:10, 
                         showSizeChanger:true,

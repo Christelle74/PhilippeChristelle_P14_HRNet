@@ -1,6 +1,6 @@
-import Layout from '../components/Layout';
-import React from 'react';
-import EmployeeTable from '../components/Table';
+import React, {Suspense} from 'react';
+const EmployeeTable = React.lazy(()=> import('../components/Table'))
+const Layout = React.lazy(()=> import('../components/Layout'))
 
 /**
  * Display the employees page that contains the Table component
@@ -9,13 +9,15 @@ import EmployeeTable from '../components/Table';
  */
 const Employees = () => {
     return (
-        <>
+        
+        <Suspense fallback={<p>loading...</p>}>
             <Layout/>
             <main>
-                <h1 style={{color:'#5b8c00'}}>Current Employees</h1>
+                <h1 style={{color:'#5a6f06', fontSize:'20px', fontWeight: '700'}}>Current Employees</h1>
                 <EmployeeTable/>
             </main>
-        </>
+        </Suspense>
+        
     );
 };
 
