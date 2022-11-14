@@ -18,7 +18,7 @@ const Home = () => {
                         <Link to="/createemployee" className='userCard'>
                             <Card style={{ width: 300, marginTop: 50, backgroundColor:'#d6db99a9'}}>
                                 <Avatar src="/avatar1.png" alt="avatar" size={60}/>
-                                <p style={{marginTop: 20, color:'#5a6f06', fontSize:20, fontWeight:700 }}>Administrator</p>
+                                <h3 style={{marginTop: 20, color:'#5a6f06', fontSize:20, fontWeight:700 }}>Administrator</h3>
                             </Card>
                         </Link>
                     </li>
@@ -26,7 +26,7 @@ const Home = () => {
                         <Link to="" className='userCard'>
                             <Card style={{ width: 300, marginTop: 50, backgroundColor:'#d6db99a9' }}>
                                 <Avatar  size={60} style={{color:'#3070ab', backgroundColor:'rgb(240, 239, 239)'}}>User</Avatar>
-                                <p style={{ marginTop: 20, color:'#5a6f06', fontSize:20, fontWeight:700 }}>User</p>
+                                <h3 style={{ marginTop: 20, color:'#5a6f06', fontSize:20, fontWeight:700 }}>User</h3>
                             </Card>
                         </Link>
                     </li>

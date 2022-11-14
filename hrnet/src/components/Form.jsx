@@ -72,6 +72,7 @@ const EmployeeForm = () => {
                         placeholder="Choose a State"
                         allowClear
                         name='state'
+                        aria-label='choose a state'
                         aria-expanded='true'
                         aria-owns='state'
                         aria-controls='state'

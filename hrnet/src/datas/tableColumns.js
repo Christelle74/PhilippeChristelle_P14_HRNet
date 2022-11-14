@@ -7,7 +7,6 @@ export const columns = [
         sorter: (a, b) => a.firstName.localeCompare(b.firstName),
         defaultSortOrder: 'descend',
         ellipsis: true,
-        "aria-sort":"descending"
     },
     {
         "title": 'Last Name',

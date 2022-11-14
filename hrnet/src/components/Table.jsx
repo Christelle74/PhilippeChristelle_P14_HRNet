@@ -4,6 +4,7 @@ import { columns } from '../datas/tableColumns';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEmployees } from '../features/employeesSlice';
 import DataFormater from "../services/dataFormater"
+import FormItem from 'antd/es/form/FormItem';
 
 /**
  * Creation of the table displaying all employees
@@ -38,14 +39,15 @@ const EmployeeTable = () => {
 
     return (
         <>
-            <div style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
+            <FormItem style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
                 <Input.Search 
                     placeholder="Search by..."
                     allowClear
                     style={{ width: 200}}
                     onSearch ={onSearch}
+                    
                 />
-            </div>
+            </FormItem>
             <div style={{margin: 20}}>
                 <Table 
                     columns={columns}
