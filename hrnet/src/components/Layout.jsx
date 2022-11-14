@@ -11,7 +11,7 @@ import Navigation from './Navigation';
  */
 const Layout = () => {
     return (
-        <header className='header' >
+        <header className='header'>
             <Logo/>
             <Navigation/>
         </header>
