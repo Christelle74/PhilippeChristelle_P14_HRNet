@@ -84,37 +84,43 @@ const EmployeeForm = () => {
                 autoComplete='off'
                 onFinish={onFinish}
                 >
-                &lt;Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
-                    &lt;Input placeholder='Type a first name'/>
+                &lt;Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' htmlFor='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a first name' name='firstName'/>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item  labelCol={{ span: 24 }} label="Last Name" name='lastName' rules={[{required: true, message: 'Please enter the last name'}, {whitespace:true}, {min:3}]} hasFeedback>
-                    &lt;Input placeholder='Type a last name'  />
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Last Name" name='lastName'htmlFor='lastName' rules={[{required: true, message: 'Please enter the last name'}, {whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a last name' name='lastName'/>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
-                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of Birth" name='birthdate' htmlFor='birthdate' rules={[{required: true, message: 'Please enter a date of birth'}]} >
+                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY' name='birthdate'/>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
-                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY'/>
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Date of start" name='startDate' htmlFor='startDate' rules={[{required: true, message: 'Please enter a date'}]} >
+                    &lt;DatePicker style={{width:'100%'}} picker="date"  format='DD/MM/YYYY' name='startDate'/>
                 &lt;/Form.Item>
             
             
-                &lt;Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Address&lt;/Divider>
+                &lt;Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Address&lt;/Divider>
     
-                &lt;Form.Item  labelCol={{ span: 24 }} label="Street" name='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
-                    &lt;Input  placeholder='Type a street'   />
+                &lt;Form.Item  labelCol={{ span: 24 }} label="Street" name='street' htmlFor='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input  placeholder='Type a street'  name='street'/>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item labelCol={{ span: 24 }} label="City" name='city' rules={[{required: true, message: 'Please enter the city'},{whitespace:true}, {min:3}]} hasFeedback>
-                    &lt;Input placeholder='Type a city'   />
+                &lt;Form.Item labelCol={{ span: 24 }} label="City" name='city' htmlFor='city' rules={[{required: true, message: 'Please enter the city'},{whitespace:true}, {min:3}]} hasFeedback>
+                    &lt;Input placeholder='Type a city' name='city'/>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item labelCol={{ span: 24 }} label="State" name='state' rules={[{required: true, message: 'Please select a state'}]}>
+                &lt;Form.Item labelCol={{ span: 24 }} label="State" name='state' htmlFor='state' rules={[{required: true, message: 'Please select a state'}]}>
                     &lt;Select
                         placeholder="Choose a State"
                         allowClear
+                        name='state'
+                        aria-label='choose a state'
+                        aria-expanded='true'
+                        aria-owns='state'
+                        aria-controls='state'
+                        aria-activedescendant=""
                     >
                         {states.map((state) => (
                             &lt;Option  value={state.name} key={state.abbreviation}>{state.name}&lt;/Option>
@@ -122,16 +128,20 @@ const EmployeeForm = () => {
                     &lt;/Select>
                 &lt;/Form.Item>
                 
-                &lt;Form.Item labelCol={{ span: 24 }} label="Zip Code" name='zipcode' rules={[{required: true, message: 'Please select a zip code', type: 'number', min: 0, max: 99999}]}>
-                    &lt;InputNumber style={{width:'100%'}} placeholder='Type a zip code'/>
+                &lt;Form.Item labelCol={{ span: 24 }} label="Zip Code" name='zipcode' htmlFor='zipcode' rules={[{required: true, message: 'Please select a zip code', type: 'number', min: 0, max: 99999}]}>
+                    &lt;InputNumber style={{width:'100%'}} placeholder='Type a zip code' name='zipcode'/>
                 &lt;/Form.Item>
 
-                &lt;Divider style={{border:'#5b8c00', color:'#5b8c00', fontSize:'14px', fontWeight:'bold', marginTop:'50px'}} orientation="left">Department&lt;/Divider>
+                &lt;Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Department&lt;/Divider>
                 
-                &lt;Form.Item labelCol={{ span: 24 }} label="" wrapperCol={{ span: 24}} name='department' rules={[{required: true, message: 'Please select a department'}]}>
+                &lt;Form.Item labelCol={{ span: 24 }} label="department" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
                     &lt;Select
                         placeholder="Choose a department"
-                
+                        name='department'
+                        aria-expanded='true'
+                        aria-owns='department'
+                        aria-controls='department'
+                        aria-activedescendant=""
                     >
                         {departments.map((department) => (
                             &lt;Option value={department.name} key={department.id}>{department.name}&lt;/Option>
@@ -140,7 +150,7 @@ const EmployeeForm = () => {
                 &lt;/Form.Item>
 
                 &lt;Form.Item  wrapperCol={{ span: 24}}>
-                    &lt;Button block style={{background: '#5b8c00', color: 'white', width:'100%'}} htmlType="submit" >Save&lt;/Button>
+                    &lt;Button block style={{background: '#5a6f06', color: 'white', width:'100%'}} htmlType="submit" >Save&lt;/Button>
                 &lt;/Form.Item>
                 &lt;Modal 
                     // modalStyle={modalStyle} 
@@ -178,7 +188,7 @@ export default EmployeeForm</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Nov 10 2022 10:53:13 GMT+0100 (heure normale d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Mon Nov 14 2022 15:01:38 GMT+0100 (heure normale d’Europe centrale) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

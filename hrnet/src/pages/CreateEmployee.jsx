@@ -5,7 +5,7 @@ const Layout = React.lazy(()=> import('../components/Layout'))
 /**
  * Display the create employee page that contains the form component
  * @component
- * @returns {JSX.Element} - Home component
+ * @returns {JSX.Element} - CreateEmployee component
  */
 const CreateEmployee = () => {
     return (
