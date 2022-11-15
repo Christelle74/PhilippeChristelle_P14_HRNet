@@ -28,6 +28,13 @@ const EmployeeForm = () => {
         form.resetFields()
     }
     
+    const xButtonStyle ={
+        "display" :"none"
+    }
+    const button2Style ={
+        "display" :"none"
+    }
+
     return (
     <>
         <Space direction="vertical" size='small'>
@@ -113,12 +120,12 @@ const EmployeeForm = () => {
                     // modalHeaderStyle={modalHeaderStyle} 
                     // modalBodyStyle={modalBodyStyle} 
                     // modalFooterStyle={modalFooterStyle} 
-                    // xButtonStyle={xButtonStyle} 
-                    // footerButtonStyle={footerButtonStyle} 
+                    xButtonStyle={xButtonStyle} 
+                    footerButton2Style={button2Style} 
                     title="Confirmation" 
                     message="New employee created !" 
                     buttonText1="Ok"
-                    buttonText2="Cancel"
+                    //buttonText2={"Cancel"}
                     showModal={displayModal} 
                     hideModal={()=>setDisplayModal(false)} 
                 />
