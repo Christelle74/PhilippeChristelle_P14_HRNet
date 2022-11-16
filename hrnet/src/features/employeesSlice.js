@@ -6,7 +6,7 @@ import { getAllEmployeesService, addNewEmployeeService, deleteEmployeeService } 
 export const  addNewEmployees = createAsyncThunk('employees/addNewEmployees', async (datas, thunkAPI) => {
     try { 
         const data = await addNewEmployeeService(datas)
-        //console.log(data)
+        console.log(data)
         return data
 
     } catch (error) {
@@ -76,6 +76,7 @@ export const employeesSlice = createSlice({
             state.isLoading = false
             const newEmployee = payload
             newEmployee.id=nanoid()
+            console.log(newEmployee.id)
             state.employeesList.push(newEmployee)
             
         })

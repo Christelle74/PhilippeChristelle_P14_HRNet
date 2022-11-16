@@ -8,7 +8,7 @@ import axios from 'axios'
  * @return  {Promise}  The datas from the server
  */
 async function getAllEmployeesService(){
-    return await axios.get('http://localhost:3001/employees')
+    return await axios.get('http://localhost:5000/employees')
     .then((response) => {
         return response.data
     })
@@ -26,8 +26,9 @@ async function getAllEmployeesService(){
  * @returns  {Promise} - New employee object
  */
 async function addNewEmployeeService(datas){
-    return await axios.post('http://localhost:3001/employees', {datas})
+    return await axios.post('http://localhost:5000/employees', datas)
     .then((response) => {
+        console.log(response.data)
         return response.data
     })
     .catch(function (error) {
@@ -45,7 +46,7 @@ async function addNewEmployeeService(datas){
  * @returns {Promise} The employee that was deleted
  */
 async function deleteEmployeeService(id){
-    return await axios.delete(`http://localhost:3001/employees/${id}`, {id})
+    return await axios.delete(`http://localhost:5000/employees/${id}`, {id})
     .then((response) => {
         return response.data
     })
