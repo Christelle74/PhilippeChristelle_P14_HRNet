@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-const EmployeeTable = React.lazy(()=> import('../components/Table'))
+const EmployeesTable = React.lazy(()=> import('../components/Table'))
 const Layout = React.lazy(()=> import('../components/Layout'))
 
 /**
@@ -9,12 +9,11 @@ const Layout = React.lazy(()=> import('../components/Layout'))
  */
 const Employees = () => {
     return (
-        
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense>
             <Layout/>
             <main>
                 <h1 style={{color:'#5a6f06', fontSize:'20px', fontWeight: '700'}}>Current Employees</h1>
-                <EmployeeTable/>
+                <EmployeesTable/>
             </main>
         </Suspense>
         

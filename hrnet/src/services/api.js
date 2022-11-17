@@ -13,7 +13,6 @@ async function getAllEmployeesService(){
         return response.data
     })
     .catch(function (error) {
-        // handle error
         console.log(error);
         alert("fail to access employees")
     })
@@ -28,11 +27,10 @@ async function getAllEmployeesService(){
 async function addNewEmployeeService(datas){
     return await axios.post('http://localhost:5000/employees', datas)
     .then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
         return response.data
     })
     .catch(function (error) {
-        // handle error
         console.log(error);
         alert("fail to add employee")
     })

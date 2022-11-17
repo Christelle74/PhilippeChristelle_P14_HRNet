@@ -9,8 +9,7 @@ const Layout = React.lazy(()=> import('../components/Layout'))
  */
 const CreateEmployee = () => {
     return (
-        
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense>
             <Layout/>
             <main>
                 <h1 style={{color:'#5a6f06', fontSize:'20px', fontWeight: '700'}}>Create a new employee</h1>

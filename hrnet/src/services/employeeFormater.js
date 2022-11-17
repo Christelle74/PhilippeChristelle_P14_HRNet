@@ -3,6 +3,7 @@
 * @constructor
 * @description class to format employees datas
 * Represents an employee
+* @param {string} _id - The id of the employee
 * @param {string} firstName - The firstname of the employee.
 * @param {string} lastName - The lastname of the employee.
 * @param {string} birthdate - The birthdate of the employee.
@@ -13,7 +14,7 @@
 * @param {string} state - The state where the employee is living.
 * @param {number} zipcode - The zipcode of the city.
 */
-export default class DataFormater {
+export default class Employee {
     constructor({_id, firstName, lastName, birthdate, startDate, department, street, city, state, zipcode}) {
         this.id = _id
         this.firstName = this.formatName(firstName)

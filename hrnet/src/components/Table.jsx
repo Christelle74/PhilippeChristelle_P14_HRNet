@@ -3,7 +3,7 @@ import { Table, Input} from 'antd';
 import { columns } from '../datas/tableColumns';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEmployees } from '../features/employeesSlice';
-import DataFormater from "../services/dataFormater"
+import Employee from "../services/employeeFormater"
 import FormItem from 'antd/es/form/FormItem';
 
 /**
@@ -11,13 +11,13 @@ import FormItem from 'antd/es/form/FormItem';
  * @component
  * @returns {JSX.Element} - EmployeeTable component
  */
-const EmployeeTable = () => {
+const EmployeesTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
     const [data, setData] =useState([])
     
     useEffect(() => {
-        setData(employees.map((employee)=>new DataFormater(employee)))
+        setData(employees.map((employee)=>new Employee(employee)))
         //console.log(employees)
     }, [employees])
 
@@ -73,4 +73,4 @@ const EmployeeTable = () => {
     
 };
 
-export default EmployeeTable;
+export default EmployeesTable;
