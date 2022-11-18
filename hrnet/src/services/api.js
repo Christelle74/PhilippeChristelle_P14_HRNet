@@ -8,8 +8,9 @@ import axios from 'axios'
  * @return  {Promise}  The datas from the server
  */
 async function getAllEmployeesService(){
-    return await axios.get('http://localhost:5000/employees')
+    return await axios.get('https://server-p14-hrnet-christelle74.vercel.app/employees')
     .then((response) => {
+        (console.log(response.data))
         return response.data
     })
     .catch(function (error) {
@@ -25,9 +26,9 @@ async function getAllEmployeesService(){
  * @returns  {Promise} - New employee object
  */
 async function addNewEmployeeService(datas){
-    return await axios.post('http://localhost:5000/employees', datas)
+    return await axios.post('https://server-p14-hrnet-christelle74.vercel.app/employees', datas)
     .then((response) => {
-        //console.log(response.data)
+        console.log(response.data)
         return response.data
     })
     .catch(function (error) {
