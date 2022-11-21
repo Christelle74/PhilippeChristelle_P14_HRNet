@@ -10,7 +10,6 @@ import axios from 'axios'
 async function getAllEmployeesService(){
     return await axios.get('https://server-p14-hrnet-christelle74.vercel.app/employees')
     .then((response) => {
-        (console.log(response.data))
         return response.data
     })
     .catch(function (error) {
@@ -28,7 +27,6 @@ async function getAllEmployeesService(){
 async function addNewEmployeeService(datas){
     return await axios.post('https://server-p14-hrnet-christelle74.vercel.app/employees', datas)
     .then((response) => {
-        console.log(response.data)
         return response.data
     })
     .catch(function (error) {
