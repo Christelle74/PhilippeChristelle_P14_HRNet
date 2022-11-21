@@ -23,10 +23,6 @@ HRnet project is an application of employees's folder gestion for Wealth Health.
 - [VSCODE](https://code.visualstudio.com/)
 - [ANT DESIGN (**version 4.23.5**)](https://ant.design/)
 
-**2 - Back-end :**
-- [MONGODB (**version 4.23.5**)](https://www.mongodb.com/fr-fr)
-- [EXPRESS (**version 4.18.2**)](https://expressjs.com/fr/)
-- [MONGOOSE (**version 6.7.2**)](https://mongoosejs.com/)
 
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
