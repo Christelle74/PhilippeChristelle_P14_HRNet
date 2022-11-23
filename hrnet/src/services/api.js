@@ -8,13 +8,12 @@ import axios from 'axios'
  * @return  {Promise}  The datas from the server
  */
 async function getAllEmployeesService(){
-    return await axios.get('https://server-p14-hrnet-christelle74.vercel.app/employees')
+    return await axios.get('https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees')
     .then((response) => {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
-        alert("fail to access employees")
+        return error.message
     })
 }
 
@@ -25,13 +24,12 @@ async function getAllEmployeesService(){
  * @returns  {Promise} - New employee object
  */
 async function addNewEmployeeService(datas){
-    return await axios.post('https://server-p14-hrnet-christelle74.vercel.app/employees', datas)
+    return await axios.post('https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees', datas)
     .then((response) => {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
-        alert("fail to add employee")
+        return error.message
     })
 }
 
@@ -43,14 +41,13 @@ async function addNewEmployeeService(datas){
  * @returns {Promise} The employee that was deleted
  */
 async function deleteEmployeeService(id){
-    return await axios.delete(`http://localhost:5000/employees/${id}`, {id})
+    return await axios.delete(`https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees/${id}`, {id})
     .then((response) => {
         return response.data
     })
     .catch(function (error) {
-        // handle error
         console.log(error);
-        alert("fail to delete employee")
+        return error
     })
 }
 

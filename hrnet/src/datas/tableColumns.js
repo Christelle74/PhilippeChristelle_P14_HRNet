@@ -1,3 +1,4 @@
+import moment from 'moment'
 
 export const columns = [
     {
@@ -21,7 +22,7 @@ export const columns = [
         "dataIndex": 'startDate',
         "key": 'startDate',
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a.startDate - b.startDate,
+        sorter: (a, b) => moment(a.startDate, "DD-MM-YYYY")  - moment(b.startDate,"DD-MM-YYYY"),
         ellipsis: true,
     },
     {
@@ -37,7 +38,7 @@ export const columns = [
         "dataIndex": 'birthdate',
         "key": 'birthdate',
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a.birthdate - b.birthdate,
+        sorter: (a, b) => moment(a.birthdate, "DD-MM-YYYY")  - moment(b.birthdate,"DD-MM-YYYY"),
         ellipsis: true,
     },
     {

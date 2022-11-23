@@ -6,6 +6,8 @@ import { getAllEmployees } from '../features/employeesSlice';
 import Employee from "../services/employeeFormater"
 import FormItem from 'antd/es/form/FormItem';
 
+
+
 /**
  * Creation of the table displaying all employees
  * @component
@@ -15,10 +17,9 @@ const EmployeesTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
     const [data, setData] =useState([])
-    
+
     useEffect(() => {
         setData(employees.map((employee)=>new Employee(employee)))
-        //console.log(employees)
     }, [employees])
 
     useEffect(() => {
@@ -48,6 +49,7 @@ const EmployeesTable = () => {
                     
                 />
             </FormItem>
+            
             <div style={{margin: 20}}>
                 <Table 
                     columns={columns}
@@ -56,7 +58,8 @@ const EmployeesTable = () => {
                     size='middle' 
                     pagination={{
                         style:{marginTop:'30px'},
-                        pageSize:10, 
+                        defaultPageSize:10, 
+                        defaultCurrent:1,
                         showSizeChanger:true,
                         size: 'small',
                         position: ['bottomCenter'],
@@ -66,7 +69,7 @@ const EmployeesTable = () => {
                     }} 
                     scroll={{y: 240}} 
                 >
-                </Table>   
+                </Table>
             </div>
         </>
     );

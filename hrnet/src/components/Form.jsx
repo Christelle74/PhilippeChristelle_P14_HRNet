@@ -16,29 +16,24 @@ const {Option} = Select
 const EmployeeForm = () => {
     const dispatch = useDispatch()
     const allEmployees = useSelector((state)=>state.employees.employeesList)
+    const {success} = useSelector(state=>state.employees)
     const [form] = Form.useForm();
     const [displayModal, setDisplayModal] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
     const onFormLayoutChange = ({ size }) => {setComponentSize(size)};
     
-    const onFinish=(values) =>{
+    const onFinish= (values) =>{
         values.id = allEmployees.length + 1;
         dispatch(addNewEmployees({values}))
         setDisplayModal(true)
         form.resetFields()
     }
-    
-    const xButtonStyle ={
-        "display" :"none"
-    }
-    const button2Style ={
-        "display" :"none"
-    }
+
 
     return (
     <>
         <Space direction="vertical" size='small'>
-            
+
             <Form 
                 form ={form}
                 initialValues={{size: componentSize}}
@@ -47,6 +42,7 @@ const EmployeeForm = () => {
                 autoComplete='off'
                 onFinish={onFinish}
                 >
+
                 <Form.Item  labelCol={{ span: 24 }} label="First Name" name='firstName' htmlFor='firstName' rules={[{required: true, message: 'Please enter the first name'}, {whitespace:true}, {min:3}]} hasFeedback>
                     <Input placeholder='Type a first name' name='firstName'/>
                 </Form.Item>
@@ -64,7 +60,7 @@ const EmployeeForm = () => {
                 </Form.Item>
             
             
-                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Address</Divider>
+                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'30px'}} orientation="left">Address</Divider>
     
                 <Form.Item  labelCol={{ span: 24 }} label="Street" name='street' htmlFor='street' rules={[{required: true, message: 'Please enter the street'},{whitespace:true}, {min:3}]} hasFeedback>
                     <Input  placeholder='Type a street'  name='street'/>
@@ -95,9 +91,9 @@ const EmployeeForm = () => {
                     <InputNumber style={{width:'100%'}} placeholder='Type a zip code' name='zipcode'/>
                 </Form.Item>
 
-                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'50px'}} orientation="left">Department</Divider>
+                <Divider style={{border:'#5a6f06', color:'#5a6f06', fontSize:'16px', fontWeight:'700', marginTop:'30px'}} orientation="left">Department</Divider>
                 
-                <Form.Item labelCol={{ span: 24 }} label="department" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
+                <Form.Item labelCol={{ span: 24 }} label="Department" wrapperCol={{ span: 24}} name='department' htmlFor='department' rules={[{required: true, message: 'Please select a department'}]}>
                     <Select
                         placeholder="Choose a department"
                         name='department'
@@ -115,20 +111,28 @@ const EmployeeForm = () => {
                 <Form.Item  wrapperCol={{ span: 24}}>
                     <Button block style={{background: '#5a6f06', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
-                <Modal 
-                    // modalStyle={modalStyle} 
-                    // modalHeaderStyle={modalHeaderStyle} 
-                    // modalBodyStyle={modalBodyStyle} 
-                    // modalFooterStyle={modalFooterStyle} 
-                    xButtonStyle={xButtonStyle} 
-                    footerButton2Style={button2Style} 
-                    title="Confirmation" 
-                    message="New employee created !" 
-                    buttonText1="Ok"
-                    //buttonText2={"Cancel"}
-                    showModal={displayModal} 
-                    hideModal={()=>setDisplayModal(false)} 
-                />
+                    {success ?
+                        <Modal  
+                            xButtonStyle={{display:'none'}} 
+                            footerButton2Style={{display:'none'}} 
+                            title="Confirmation" 
+                            message="New employee created !" 
+                            buttonText1="Ok"
+                            showModal={displayModal} 
+                            hideModal={()=>setDisplayModal(false)} 
+                        />
+                    : 
+                        <Modal
+                            modalBodyStyle={{color:'red'}} 
+                            xButtonStyle={{display:'none'}} 
+                            footerButton2Style={{display:'none'}} 
+                            title="Error !" 
+                            message="Failed to create a new employee !" 
+                            buttonText1="Cancel"
+                            showModal={displayModal}
+                            hideModal={()=>setDisplayModal(false)}
+                        />
+                    } 
             </Form>
             
         </Space>

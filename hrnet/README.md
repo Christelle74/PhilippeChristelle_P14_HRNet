@@ -42,6 +42,11 @@ If you are working with several versions of NodeJS, we recommend you install [nv
   - Open a new terminal
   - Run `cd hrnet` 
   - Then run the `npm start` command that will allow you to run the application on http://localhost:3000
+  - Replace in API file the url with 'http://localhost:5000/employees'
+
+
+**3- Testing :**
+  - You can test directly the application here `https://philippe-christelle-p14-hr-net-9eau.vercel.app/`
 
 ## Author
 

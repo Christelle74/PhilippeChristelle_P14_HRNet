@@ -52,7 +52,9 @@ export const deleteEmployee = createAsyncThunk('employees/deleteEmployee', async
 
 const initialState = {
     employeesList :[],
-    isLoading:false
+    loading:false,
+    error: null,
+    success:false
 }
 
 export const employeesSlice = createSlice({
@@ -66,28 +68,31 @@ export const employeesSlice = createSlice({
     extraReducers: (builder) => {
         builder
         //addNewEmployee
-        .addCase(addNewEmployees.rejected, (state) => {
-            state.isLoading = false
+        .addCase(addNewEmployees.rejected, (state, {payload}) => {
+            state.error=payload
+            state.loading=false
         })
         .addCase(addNewEmployees.pending, (state) => {
-            state.isLoading = true
+            state.loading = true
         })
         .addCase(addNewEmployees.fulfilled, (state, {payload}) => {
-            state.isLoading = false
+            state.loading = false
+            state.success = true
             const newEmployee = payload
             newEmployee.id=nanoid()
             state.employeesList.push(newEmployee)
-            
         })
         //getTableEmployees
-        .addCase(getAllEmployees.rejected, (state) => {
-            state.isLoading = false
+        .addCase(getAllEmployees.rejected, (state, {payload}) => {
+            state.error=payload
+            state.loading=false
         })
         .addCase(getAllEmployees.pending, (state) => {
-            state.isLoading = true
+            state.loading = true
         })
         .addCase(getAllEmployees.fulfilled, (state, {payload}) => {
-            state.isLoading = false
+            state.loading = false
+            state.success = true
             state.employeesList = payload
         })
     }
