@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Table, Input} from 'antd';
+import { Table, Input, Spin} from 'antd';
 import { columns } from '../datas/tableColumns';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEmployees } from '../features/employeesSlice';
@@ -39,6 +39,7 @@ const EmployeesTable = () => {
     };
 
     return (
+        
         <>
             <FormItem style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
                 <Input.Search 
@@ -68,10 +69,12 @@ const EmployeesTable = () => {
                         )
                     }} 
                     scroll={{y: 240}} 
+                    loading={{ indicator:<div><Spin/></div>, spinning:!data}}
                 >
                 </Table>
             </div>
         </>
+        
     );
     
 };
