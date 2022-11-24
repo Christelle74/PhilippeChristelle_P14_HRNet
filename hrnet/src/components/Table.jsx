@@ -16,6 +16,7 @@ import FormItem from 'antd/es/form/FormItem';
 const EmployeesTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
+    const {loading} = useSelector(state=>state.employees)
     const [data, setData] =useState([])
 
     useEffect(() => {
@@ -69,7 +70,7 @@ const EmployeesTable = () => {
                         )
                     }} 
                     scroll={{y: 350}} 
-                    loading={{ indicator:<div><Spin/></div>, spinning:!data}}
+                    loading={{ indicator:<div style={{height:'1rem'}}><Spin size="large" tip="Be patient, datas are coming !" /></div>, spinning: loading}}
                 >
                 </Table>
             </div>

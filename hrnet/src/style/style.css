@@ -120,6 +120,13 @@ border: 2px solid #5a6f06;
     background-color: #5a6f06;
 }
 
+.ant-spin-nested-loading > div > .ant-spin .ant-spin-text{
+    width: 300px !important;
+    top:300% !important;
+    left: -600% !important;
+    font-size:20px;
+    color:#3070ab
+}
 .modal-header h3{
     color:red;
     font-size:20px
