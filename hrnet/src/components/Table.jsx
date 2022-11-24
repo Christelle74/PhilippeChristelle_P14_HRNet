@@ -41,7 +41,7 @@ const EmployeesTable = () => {
     return (
         
         <>
-            <FormItem style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'60px 20px 32px 25px'}}>
+            <FormItem style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'50px 20px 32px 25px'}}>
                 <Input.Search 
                     placeholder="Search by..."
                     allowClear
@@ -68,7 +68,7 @@ const EmployeesTable = () => {
                             `Showing ${range[0]} to ${range[1]} of ${total} entries`
                         )
                     }} 
-                    scroll={{y: 240}} 
+                    scroll={{y: 350}} 
                     loading={{ indicator:<div><Spin/></div>, spinning:!data}}
                 >
                 </Table>
