@@ -26,7 +26,7 @@ async function getAllEmployeesService(){
 async function addNewEmployeeService(datas){
     return await axios.post('https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees', datas)
     .then((response) => {
-        console.log(response)
+        //console.log(response)
         return response.data
     })
     .catch(function (error) {

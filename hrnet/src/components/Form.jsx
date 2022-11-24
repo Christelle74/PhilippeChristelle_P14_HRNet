@@ -16,7 +16,7 @@ const {Option} = Select
 const EmployeeForm = () => {
     const dispatch = useDispatch()
     const allEmployees = useSelector((state)=>state.employees.employeesList)
-    const {success} = useSelector(state=>state.employees)
+    const success = useSelector(state=>state.employees.success)
     const [form] = Form.useForm();
     const [displayModal, setDisplayModal] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
@@ -111,7 +111,8 @@ const EmployeeForm = () => {
                 <Form.Item  wrapperCol={{ span: 24}}>
                     <Button block style={{background: '#5a6f06', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
-                    {success ?
+                    
+                    {success ? (
                         <Modal  
                             xButtonStyle={{display:'none'}} 
                             footerButton2Style={{display:'none'}} 
@@ -121,7 +122,7 @@ const EmployeeForm = () => {
                             showModal={displayModal} 
                             hideModal={()=>setDisplayModal(false)} 
                         />
-                    : 
+                    ):(   
                         <Modal
                             modalBodyStyle={{color:'red'}} 
                             xButtonStyle={{display:'none'}} 
@@ -132,7 +133,7 @@ const EmployeeForm = () => {
                             showModal={displayModal}
                             hideModal={()=>setDisplayModal(false)}
                         />
-                    } 
+                    )} 
             </Form>
             
         </Space>

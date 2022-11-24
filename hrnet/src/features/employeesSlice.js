@@ -70,7 +70,7 @@ export const employeesSlice = createSlice({
         //addNewEmployee
         .addCase(addNewEmployees.rejected, (state, {payload}) => {
             state.error=payload
-            state.loading=false
+            state.success=false
         })
         .addCase(addNewEmployees.pending, (state) => {
             state.loading = true
