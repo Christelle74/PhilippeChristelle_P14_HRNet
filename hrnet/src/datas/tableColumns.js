@@ -6,7 +6,7 @@ export const columns = [
         "dataIndex": 'firstName',
         "key": 'firstName',
         sorter: (a, b) => a.firstName.localeCompare(b.firstName),
-        defaultSortOrder: 'descend',
+        defaultSortOrder: 'ascend',
         ellipsis: true,
     },
     {
@@ -14,7 +14,7 @@ export const columns = [
         "dataIndex": 'lastName',
         "key": 'lastName',
         sorter: (a, b) => a.lastName.localeCompare(b.lastName),
-        defaultSortOrder: 'descend',
+        defaultSortOrder: 'ascend',
         ellipsis: true,
     },
     {
