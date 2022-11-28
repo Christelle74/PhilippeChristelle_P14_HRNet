@@ -127,6 +127,14 @@ border: 2px solid #5a6f06;
     font-size:20px;
     color:#3070ab
 }
+
+.spinner{
+    position: fixed;
+    width: 25% !important;
+    bottom: 25% !important;
+    left: 50% !important;
+    color:#3070ab
+}
 .modal-header h3{
     color:red;
     font-size:20px

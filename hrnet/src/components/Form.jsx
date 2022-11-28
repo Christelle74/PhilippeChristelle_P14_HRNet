@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewEmployees } from '../features/employeesSlice';
-import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber } from 'antd';
+import { Form, Button, Input, Space, DatePicker, Select,  Divider, InputNumber, Spin } from 'antd';
 import { states } from '../datas/statesList';
 import { departments } from '../datas/departmentList';
 import {Modal} from "modal-lib"
@@ -16,7 +16,7 @@ const {Option} = Select
 const EmployeeForm = () => {
     const dispatch = useDispatch()
     const allEmployees = useSelector((state)=>state.employees.employeesList)
-    const success = useSelector(state=>state.employees.success)
+    const {success, loading} = useSelector(state=>state.employees)
     const [form] = Form.useForm();
     const [displayModal, setDisplayModal] = useState(false)
     const [componentSize, setComponentSize] = useState('small')
@@ -112,28 +112,31 @@ const EmployeeForm = () => {
                     <Button block style={{background: '#5a6f06', color: 'white', width:'100%'}} htmlType="submit" >Save</Button>
                 </Form.Item>
                     
-                    {success ? (
-                        <Modal  
-                            xButtonStyle={{display:'none'}} 
-                            footerButton2Style={{display:'none'}} 
-                            title="Confirmation" 
-                            message="New employee created !" 
-                            buttonText1="Ok"
-                            showModal={displayModal} 
-                            hideModal={()=>setDisplayModal(false)} 
-                        />
-                    ):(   
-                        <Modal
-                            modalBodyStyle={{color:'red'}} 
-                            xButtonStyle={{display:'none'}} 
-                            footerButton2Style={{display:'none'}} 
-                            title="Error !" 
-                            message="Failed to create a new employee !" 
-                            buttonText1="Cancel"
-                            showModal={displayModal}
-                            hideModal={()=>setDisplayModal(false)}
-                        />
-                    )} 
+                    {loading ? <div className='spinner' ><Spin size="large" /></div> : 
+                        !success ? (
+                            <Modal
+                                modalBodyStyle={{color:'red'}} 
+                                xButtonStyle={{display:'none'}} 
+                                footerButton2Style={{display:'none'}} 
+                                title="Error !" 
+                                message="Failed to create a new employee !" 
+                                buttonText1="Cancel"
+                                showModal={displayModal}
+                                hideModal={()=>setDisplayModal(false)}
+                            />
+                        ):
+                        (   
+                            <Modal  
+                                xButtonStyle={{display:'none'}} 
+                                footerButton2Style={{display:'none'}} 
+                                title="Confirmation" 
+                                message="New employee created !" 
+                                buttonText1="Ok"
+                                showModal={displayModal} 
+                                hideModal={()=>setDisplayModal(false)} 
+                            />
+                        ) 
+                    }
             </Form>
             
         </Space>
