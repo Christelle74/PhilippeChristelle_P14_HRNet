@@ -4,18 +4,32 @@ import { getAllEmployeesService, addNewEmployeeService, deleteEmployeeService } 
 
 
 export const  addNewEmployees = createAsyncThunk('employees/addNewEmployees', async (datas, thunkAPI) => {
-    try { 
+        console.log(datas)
+        
+        try {
         const data = await addNewEmployeeService(datas)
-        //console.log(data)
-        return data
+            console.log(data)
+            if(!data){ return thunkAPI.rejectWithValue('error ')}
+            return data
+        }
+        catch (error){
+            console.log('slice ne fonctionne  pas ',error )        
+            return thunkAPI.rejectWithValue(error)
+        }
+    // try { 
+    //     const data = await addNewEmployeeService(datas)
+    //     console.log(data)
+    //     return data
 
-    } catch (error) {
-        const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString()
-        return thunkAPI.rejectWithValue(message)
-    }
+    // } catch (error) {
+    //     console.log('ok ça marche ',error )
+    //     const message =
+    //     (error.response && error.response.data && error.response.data.message) ||
+    //     error.message ||
+    //     error.toString()
+        
+    //     return thunkAPI.rejectWithValue(message)
+    // }
 })
 
 export const getAllEmployees = createAsyncThunk('employees/getAllEmployees', async (thunkAPI) => {
@@ -68,27 +82,29 @@ export const employeesSlice = createSlice({
     extraReducers: (builder) => {
         builder
         //addNewEmployee
-        .addCase(addNewEmployees.rejected, (state, {payload}) => {
-            state.error=payload
-            state.loading=false
-        })
         .addCase(addNewEmployees.pending, (state) => {
             state.loading = true
+        })
+        .addCase(addNewEmployees.rejected, (state, {payload}) => {
+            console.log(payload)
+            state.error=payload
+            state.loading=false
         })
         .addCase(addNewEmployees.fulfilled, (state, {payload}) => {
             state.loading = false
             state.success = true
+            console.log(payload)
             const newEmployee = payload
             newEmployee.id=nanoid()
             state.employeesList.push(newEmployee)
         })
+
         //getTableEmployees
-        .addCase(getAllEmployees.rejected, (state, {payload}) => {
-            state.error=payload
-            state.loading=false
-        })
         .addCase(getAllEmployees.pending, (state) => {
             state.loading = true
+        })
+        .addCase(getAllEmployees.rejected, (state, {payload}) => {
+            state.error=payload
         })
         .addCase(getAllEmployees.fulfilled, (state, {payload}) => {
             state.loading = false

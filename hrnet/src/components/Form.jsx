@@ -113,7 +113,17 @@ const EmployeeForm = () => {
                 </Form.Item>
                     
                     {loading ? <div className='spinner' ><Spin size="large" /></div> : 
-                        !success ? (
+                        success ? (   
+                            <Modal  
+                                xButtonStyle={{display:'none'}} 
+                                footerButton2Style={{display:'none'}} 
+                                title="Confirmation" 
+                                message="New employee created !" 
+                                buttonText1="Ok"
+                                showModal={displayModal} 
+                                hideModal={()=>setDisplayModal(false)} 
+                            />
+                        ) : (
                             <Modal
                                 modalBodyStyle={{color:'red'}} 
                                 xButtonStyle={{display:'none'}} 
@@ -124,19 +134,9 @@ const EmployeeForm = () => {
                                 showModal={displayModal}
                                 hideModal={()=>setDisplayModal(false)}
                             />
-                        ):
-                        (   
-                            <Modal  
-                                xButtonStyle={{display:'none'}} 
-                                footerButton2Style={{display:'none'}} 
-                                title="Confirmation" 
-                                message="New employee created !" 
-                                buttonText1="Ok"
-                                showModal={displayModal} 
-                                hideModal={()=>setDisplayModal(false)} 
-                            />
-                        ) 
-                    }
+                        )
+                        
+                     } 
             </Form>
             
         </Space>

@@ -8,13 +8,13 @@ import axios from 'axios'
  * @return  {Promise}  The datas from the server
  */
 async function getAllEmployeesService(){
-    return await axios.get('https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees')
-    .then((response) => {
+    try {
+        const response = await  axios.get('https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees')
         return response.data
-    })
-    .catch(function (error) {
-        return error.message
-    })
+    }
+    catch(error){
+        return error
+    }
 }
 
 
@@ -24,14 +24,15 @@ async function getAllEmployeesService(){
  * @returns  {Promise} - New employee object
  */
 async function addNewEmployeeService(datas){
-    return await axios.post('https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees', datas)
-    .then((response) => {
-        //console.log(response)
+    try{
+    const response = await axios.post('https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employee', datas)
+        console.log(response.data)
         return response.data
-    })
-    .catch(function (error) {
-        return error.message
-    })
+    }
+    catch(error){
+        console.log('api ne fonctionne pas ',error)
+        return error
+    }
 }
 
 
@@ -42,12 +43,12 @@ async function addNewEmployeeService(datas){
  * @returns {Promise} The employee that was deleted
  */
 async function deleteEmployeeService(id){
-    return await axios.delete(`https://server-p14-hrnet-h4vrxz1ym-christelle74.vercel.app/employees/${id}`, {id})
+    await axios.delete(`https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees/${id}`, {id})
     .then((response) => {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
+        //console.log(error);
         return error
     })
 }
