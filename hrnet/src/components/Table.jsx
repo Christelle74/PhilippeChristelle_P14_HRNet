@@ -55,24 +55,24 @@ const EmployeesTable = () => {
             <div style={{margin: 20}}> 
                 <ConfigProvider renderEmpty={() => loading ? <Spin style={{height:'1rem'}} size="large" tip="Be patient, datas are coming !"/>:<Empty description="An error occures with database" style={{fontSize:'20px', color:'red'}}/> } style={{height:'5rem'}}>
                     <Table 
-                    columns={columns}
-                    rowKey={(employee) => employee.id}
-                    dataSource={filterTable == null ? data : filterTable} 
-                    size='middle' 
-                    pagination={{
-                        style:{marginTop:'30px'},
-                        defaultPageSize:10, 
-                        defaultCurrent:1,
-                        showSizeChanger:true,
-                        size: 'small',
-                        position: ['bottomCenter'],
-                        showTotal: (total, range) => (
-                            `Showing ${range[0]} to ${range[1]} of ${total} entries`
-                        )
-                    }} 
-                    scroll={{y: 500}} 
-                >
-                </Table>
+                        columns={columns}
+                        rowKey={(employee) => employee.id}
+                        dataSource={filterTable == null ? data : filterTable} 
+                        size='middle' 
+                        pagination={{
+                            style:{marginTop:'30px'},
+                            defaultPageSize:10, 
+                            defaultCurrent:1,
+                            showSizeChanger:true,
+                            size: 'small',
+                            position: ['bottomCenter'],
+                            showTotal: (total, range) => (
+                                `Showing ${range[0]} to ${range[1]} of ${total} entries`
+                            )
+                        }} 
+                        scroll={{y: 500}} 
+                    >
+                    </Table>
                 </ConfigProvider> 
             </div>
         </>
