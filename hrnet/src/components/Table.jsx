@@ -16,7 +16,7 @@ import FormItem from 'antd/es/form/FormItem';
 const EmployeesTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
-    const {loading,} = useSelector(state=>state.employees)
+    const {loading} = useSelector(state=>state.employees)
     const [data, setData] =useState([])
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const EmployeesTable = () => {
             </FormItem>
 
             <div style={{margin: 20}}> 
-                <ConfigProvider renderEmpty={() => <Empty description="An error occures with database" style={{fontSize:'20px'}}/>}>
+                <ConfigProvider renderEmpty={() => loading ? <Spin style={{height:'1rem'}} size="large" tip="Be patient, datas are coming !"/>:<Empty description="An error occures with database" style={{fontSize:'20px', color:'red'}}/> } style={{height:'5rem'}}>
                     <Table 
                     columns={columns}
                     rowKey={(employee) => employee.id}
@@ -71,7 +71,6 @@ const EmployeesTable = () => {
                         )
                     }} 
                     scroll={{y: 500}} 
-                    loading={{ indicator:<div style={{height:'1rem'}}><Spin size="large" tip="Be patient, datas are coming !" /></div>, spinning: loading}}
                 >
                 </Table>
                 </ConfigProvider> 

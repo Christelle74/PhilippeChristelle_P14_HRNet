@@ -128,6 +128,9 @@ a{
     color:#3070ab
 }
 
+.ant-table-empty .ant-table-tbody > tr.ant-table-placeholder{
+    height:500px
+}
 .spinner{
     position: fixed;
     width: 25% !important;
