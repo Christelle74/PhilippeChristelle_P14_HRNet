@@ -109,8 +109,8 @@ a{
 }
 
 .ant-modal-content {
-border-radius: 15px;
-border: 2px solid #5a6f06; 
+    border-radius: 15px;
+    border: 2px solid #5a6f06; 
 }
 .ant-modal-close-x {
     display: none;
@@ -135,10 +135,7 @@ border: 2px solid #5a6f06;
     left: 50% !important;
     color:#3070ab
 }
-.modal-header h3{
-    color:red;
-    font-size:20px
-}
+
 
 /* --------------------RESPONSIVE---------------- */
 

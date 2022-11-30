@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Table, Input, Spin} from 'antd';
+import { Table, Input, Spin, Empty, ConfigProvider} from 'antd';
 import { columns } from '../datas/tableColumns';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEmployees } from '../features/employeesSlice';
@@ -16,7 +16,7 @@ import FormItem from 'antd/es/form/FormItem';
 const EmployeesTable = () => {
     const dispatch = useDispatch()
     const employees = useSelector(state=>state.employees.employeesList)
-    const {loading} = useSelector(state=>state.employees)
+    const {loading,} = useSelector(state=>state.employees)
     const [data, setData] =useState([])
 
     useEffect(() => {
@@ -38,9 +38,9 @@ const EmployeesTable = () => {
             .includes(value.toLowerCase())));
         setFilterTable(filterData);
     };
-
+    
     return (
-        
+
         <>
             <FormItem style={{display:'flex', justifyContent: 'flex-end', alignItems:'center', margin:'50px 20px 32px 25px'}}>
                 <Input.Search 
@@ -51,9 +51,10 @@ const EmployeesTable = () => {
                     
                 />
             </FormItem>
-            
-            <div style={{margin: 20}}>
-                <Table 
+
+            <div style={{margin: 20}}> 
+                <ConfigProvider renderEmpty={() => <Empty description="An error occures with database" style={{fontSize:'20px'}}/>}>
+                    <Table 
                     columns={columns}
                     rowKey={(employee) => employee.id}
                     dataSource={filterTable == null ? data : filterTable} 
@@ -69,10 +70,11 @@ const EmployeesTable = () => {
                             `Showing ${range[0]} to ${range[1]} of ${total} entries`
                         )
                     }} 
-                    scroll={{y: 350}} 
+                    scroll={{y: 500}} 
                     loading={{ indicator:<div style={{height:'1rem'}}><Spin size="large" tip="Be patient, datas are coming !" /></div>, spinning: loading}}
                 >
                 </Table>
+                </ConfigProvider> 
             </div>
         </>
         

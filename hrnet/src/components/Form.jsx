@@ -115,6 +115,7 @@ const EmployeeForm = () => {
                     {loading ? <div className='spinner' ><Spin size="large" /></div> : 
                         success ? (   
                             <Modal  
+                                titleStyle={{color:'#5a6f06',fontSize:'25px'}}
                                 xButtonStyle={{display:'none'}} 
                                 footerButton2Style={{display:'none'}} 
                                 title="Confirmation" 
@@ -125,18 +126,20 @@ const EmployeeForm = () => {
                             />
                         ) : (
                             <Modal
+                                titleStyle={{color:'red', fontSize:'25px'}}
                                 modalBodyStyle={{color:'red'}} 
                                 xButtonStyle={{display:'none'}} 
                                 footerButton2Style={{display:'none'}} 
                                 title="Error !" 
                                 message="Failed to create a new employee !" 
                                 buttonText1="Cancel"
+                                footerButton1Style={{background:'red'}}
                                 showModal={displayModal}
                                 hideModal={()=>setDisplayModal(false)}
                             />
                         )
                         
-                     } 
+                    } 
             </Form>
             
         </Space>

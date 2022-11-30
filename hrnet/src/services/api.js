@@ -10,10 +10,12 @@ import axios from 'axios'
 async function getAllEmployeesService(){
     try {
         const response = await  axios.get('https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees')
+        //console.log(response.data)
         return response.data
     }
     catch(error){
-        return error
+        //console.log('request failed 404 error', error)
+        throw error
     }
 }
 
@@ -25,13 +27,13 @@ async function getAllEmployeesService(){
  */
 async function addNewEmployeeService(datas){
     try{
-    const response = await axios.post('https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employee', datas)
-        console.log(response.data)
+    const response = await axios.post('https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees', datas)
+        //console.log(response.data)
         return response.data
     }
     catch(error){
-        console.log('api ne fonctionne pas ',error)
-        return error
+        //console.log('request failed 404 error ',error)
+        throw error
     }
 }
 
@@ -43,14 +45,15 @@ async function addNewEmployeeService(datas){
  * @returns {Promise} The employee that was deleted
  */
 async function deleteEmployeeService(id){
-    await axios.delete(`https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees/${id}`, {id})
-    .then((response) => {
+    try{
+    const response = await axios.delete(`https://server-p14-hrnet-4cmutkqn0-christelle74.vercel.app/employees/${id}`, {id})
+        //console.log(response.data)
         return response.data
-    })
-    .catch(function (error) {
+    }
+    catch(error) {
         //console.log(error);
-        return error
-    })
+        throw error
+    }
 }
 
 
