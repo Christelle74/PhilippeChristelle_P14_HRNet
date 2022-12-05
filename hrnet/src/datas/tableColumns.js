@@ -70,7 +70,7 @@ export const columns = [
         "dataIndex": 'zipcode',
         "key": 'zipcode',
         defaultSortOrder: 'descend',
-        sorter: (a, b) => a.zipcode - b.zipcode,
+        sorter: (a, b) =>  a.zipcode.localeCompare(b.zipcode),
         ellipsis: true,
     },
     // {
